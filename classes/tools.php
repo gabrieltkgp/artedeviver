@@ -23,27 +23,10 @@ class Tools{
         	session_start();
 		}
       
-	    if (!isset($_SESSION['cust_id'])) {
+	    if (!isset($_SESSION['id'])) {
 	        session_destroy();
-	        header("Location: p2-login.php"); 
+	        header("Location: login.php"); 
 	    } 
-	}
-
-	function isAdminLogged(){
-		
-		if (!isset($_SESSION)){
-        	session_start();
-		}
-      
-	    if (!isset($_SESSION['cust_id'])) {
-	        session_destroy();
-	        header("Location: p2-login.php"); 
-	        return;
-	    }
-
-	    if ($_SESSION['cust_level'] <> ADMIN) {
-	        header("Location: p2-upload-files-beta1.php?login=" . $_SESSION['cust_login'] . "&project=1");
-	    }
 	}
 }
 ?> 

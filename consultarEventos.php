@@ -1,5 +1,6 @@
 <?php
 include_once("classes/tools.php");
+include_once("classes/config.php");
 
 class ConsultarEventos{
 
@@ -14,7 +15,7 @@ class ConsultarEventos{
 
 	private function ConsultarListaEventos($pnIdCidade, $pbEmailValido){
 		//$sSql = "SELECT e.id, e.nome, e.local, e.data, e.id_cidade, e.privado FROM eventos e WHERE e.data >= now() AND e.id_cidade = ? ";
-		$sSql = "SELECT e.id, e.nome, e.local, e.data, e.id_cidade, e.privado FROM eventos e WHERE e.id_cidade = ? ";
+		$sSql = "SELECT e.id, e.nome, e.local, e.endereco, e.observacao, e.data, e.id_cidade, e.privado FROM eventos e WHERE e.id_cidade = ? ";
 
 		if(!$pbEmailValido){
 			$sSql = $sSql . " AND e.privado = 0";	
@@ -94,6 +95,24 @@ class ConsultarEventos{
 			echo $sJson;
 		}
 	}
+}
+
+if (!isset($_SERVER['PHP_AUTH_USER'])) {
+    header('WWW-Authenticate: Basic realm="My Realm"');
+    header('HTTP/1.0 401 Unauthorized');
+    exit;
+} 
+	
+if ($_SERVER['PHP_AUTH_USER'] != $auth_username){
+	header('WWW-Authenticate: Basic realm="My Realm"');
+    header('HTTP/1.0 401 Unauthorized');
+    exit;
+}
+
+if (sha1($_SERVER['PHP_AUTH_PW']) != $auth_password){
+	header('WWW-Authenticate: Basic realm="My Realm"');
+    header('HTTP/1.0 401 Unauthorized');
+    exit;
 }
 
 $oConsultarEventos = new ConsultarEventos();

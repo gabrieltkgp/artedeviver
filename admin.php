@@ -83,7 +83,7 @@ $oTools->isUserLogged();
     </form>
     <hr />
     <h2>Registros:</h2>
-    <div id="result"></div>
+    <div id="resultdiv"></div>
 
 </body>
 </html>

@@ -17,6 +17,21 @@ a:hover {
   -o-transition: 0.5s all;
   text-decoration: none;
 }
+/*
+começa aqui
+*/
+.esquerda{
+    float:left;
+    width: 20%
+}
+
+.direita{
+    width: 80%;
+}
+
+/*termina aqui*/
+
+
 /*--element start here--*/
 .element {
     width: 53%;
@@ -34,7 +49,7 @@ a:hover {
     margin: 2em 0em;
 }
 .element-block2-left {
-    float: right;
+    float: center;
     width: 100%;
 }
 .signin {

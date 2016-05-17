@@ -29,8 +29,20 @@
 			return $this->nome;
 		}
 
+		public function setLocal($local){
+			$this->local = $local;
+		}
+
+		public function getLocal(){
+			return $this->local;
+		}
+
 		public function setEndereco($endereco){
-			$this->endereco = $endereco;
+			if ($endereco == null){
+				$this->endereco = '';
+			}else{
+				$this->endereco = $endereco;	
+			}
 		}
 
 		public function getEndereco(){
@@ -38,7 +50,11 @@
 		}
 
 		public function setObservacao($observacao){
-			$this->observacao = $observacao;
+			if ($observacao == null){
+				$this->observacao = '.';
+			}else{
+				$this->observacao = $observacao;	
+			}			
 		}
 
 		public function getObservacao(){

@@ -2,9 +2,7 @@
 	include("eventos.php");
   include_once("tools.php");
 
-  class EventosQuery{
-
-    private $eventosArray = array();
+  class EventosQuery2{
 
     private function getSelectEventos($pbEmailValido){
       $sSql = "SELECT ".
@@ -30,31 +28,41 @@
     }
 
     private function TestarSeEmailValido($psEmail){
+     
       $oTools = new Tools();
-
-      $oConn = $oTools->getConn();
       
-      $sSql = $this->getSelectEmail();
-
-      $oStmt = $oConn->stmt_init();
-      //$oStmt = $oConn->prepare($sSql);
-      $oStmt->prepare($sSql);
-
-      $oStmt->bind_param('s', $psEmail);
-
-      $oStmt->execute();
-
-      $oResult = $oStmt->get_result(); 
+      try {
+        $oConn = $oTools->getConn();
       
-      if($oResult->num_rows > 0){
-        return true;
-        exit;
+        $sSql = $this->getSelectEmail();
+
+        $oStmt = $oConn->prepare($sSql);
+
+        $oStmt->bind_param('s', $psEmail);
+
+        $oStmt->execute();
+
+        $oStmt->store_result();
+
+        $bEmailValido = $oStmt->num_rows > 0;
+
+        $oStmt->free_result();
+
+        $oStmt->close();
+
+        $oConn->close();
+
+      } catch(Exception $e){
+        echo 'Caught exception: '.  $e->getMessage(). "\n";
       }
 
-      return false;
+      return $bEmailValido;
     }
 
-    private function executeQueryEventos($pbEmailValido, $pnIdCidade){
+    private function createArrayEventos($pbEmailValido, $pnIdCidade){
+      
+      $eventosArray = array();
+
       $oTools = new Tools();
 
       $oConn = $oTools->getConn();
@@ -65,23 +73,37 @@
       $oStmt->bind_param('i', $pnIdCidade);
 
       $oStmt->execute();
-      
-      return $oStmt->get_result(); 
-    }
 
-    private function createArrayEventos($pbEmailValido, $pnIdCidade){
-      $oResult = $this->executeQueryEventos($pbEmailValido, $pnIdCidade);
+      $oStmt->store_result();
 
-      $eventosArray = array();
-      if($oResult->num_rows > 0) {
-        
+      $oStmt->bind_result($id, $nome, $local, $endereco, $observacao, $data, $privado, $id_cidade, $nome_cidade, $id_estado, $nome_estado);
+
+      if ($oStmt->num_rows > 0){
         $i = 1;
+        while ($oStmt->fetch()) {
+          $eventosArray[$i] = new Eventos();
 
-        while($row = $oResult->fetch_assoc()){
-          $this->setEventosArray($eventosArray, $i, $row);
+          $eventosArray[$i]->setId($id);
+          $eventosArray[$i]->setNome($nome);   
+          $eventosArray[$i]->setLocal($local);   
+          $eventosArray[$i]->setEndereco($endereco);
+          $eventosArray[$i]->setObservacao($observacao);
+          $eventosArray[$i]->setData($data);
+          $eventosArray[$i]->setPrivado($privado);
+          $eventosArray[$i]->setIdCidade($id_cidade);
+          $eventosArray[$i]->setNomeCidade($nome_cidade);
+          $eventosArray[$i]->setIdEstado($id_estado);
+          $eventosArray[$i]->setNomeEstado($nome_estado);
+
           $i = $i + 1;
-        }
+        }  
       }
+
+      $oStmt->free_result();
+
+      $oStmt->close();
+
+      $oConn->close();
 
       return $eventosArray;
     }
@@ -105,7 +127,7 @@
       return (!empty($psEmail) and !empty($pnIdCidade));  
     }
 
-    public function getEventosCadastrados($psEmail, $pnIdCidade){
+    public function ConsultarEventosCadastrados($psEmail, $pnIdCidade){
 
       if (!$this->testarEmailECidadeValidos($psEmail, $pnIdCidade)){
         return null;
@@ -114,11 +136,10 @@
 
       $pbEmailValido = $this->TestarSeEmailValido($psEmail);
 
-      $oResult = $this->executeQueryEventos($pbEmailValido, $pnIdCidade);
-
       $eventosArray = $this->createArrayEventos($pbEmailValido, $pnIdCidade);
-
+      
       return $eventosArray;
+    
     }  
   }
   

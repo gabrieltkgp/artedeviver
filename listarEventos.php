@@ -34,13 +34,13 @@
 	<h1>Eventos Arte de viver</h1>
 	<!-- <div class="element-block2"> -->
 		<div class="element-block2-left">
-			<div class="signin">
-				<?php
-	            	include("/classes/eventosQuery.php");
+			<div class="signin"
+>				<?php
+	            	include("classes/eventosQuery2.php");
 
-                	$eventosQuery = new EventosQuery();
+                	$eventosQuery = new EventosQuery2();
 
-                	$eventosArray = $eventosQuery->getEventosCadastrados($_GET['email'], $_GET['idCidade']);
+                	$eventosArray = $eventosQuery->ConsultarEventosCadastrados($_GET['email'], $_GET['idCidade']);
 
               		if (empty($eventosArray)) {
               	    	exit;
@@ -48,13 +48,13 @@
                 
                		foreach($eventosArray as $evento){  
 			        	echo "<div id=''>";
-			        	echo             "<div class=''>".$evento->getNome()."</div>";
-			        	echo             "<div class=''>".$evento->getEndereco()."</div>";
-			        	echo             "<div class=''>".$evento->getObservacao()."</div>";
-			        	echo             "<div class=''>".$evento->getData()."</div>";
-			        	echo             "<div class=''>".$evento->getNomeCidade()."</div>";
-			        	echo             "<div class=''>".$evento->getNomeEstado()."</div>";
-			        	echo 	"<br>";     
+			        	echo   "<div class='esquerda'>Evento: </div> <div class='direita'>". $evento->getNome() ."</div>";
+			        	echo   "<div class='esquerda'>Endereço: </div> <div class='direita'>". $evento->getEndereco() ."</div>";
+			        	echo   "<div class='esquerda'>Observação: </div> <div class='direita'>". $evento->getObservacao() ."</div>";
+			        	echo   "<div class='esquerda'>Data: </div> <div class='direita'>". $evento->getData() ."</div>";
+			        	echo   "<div class='esquerda'>Cidade: </div> <div class='direita'>". $evento->getNomeCidade() ."</div>";
+			        	echo   "<div class='esquerda'>Estado: </div> <div class='direita'>". $evento->getNomeEstado() ."</div>";
+			        	echo   "<br>";     
 			        	echo "</div>";
 					}
 	       		?>

@@ -5,7 +5,7 @@ p {margin: 0;}
 html, body{
  font-family: 'Roboto Condensed', sans-serif;
    font-size: 100%;
-   background:#1f8dd6; 
+   background:#F2F2F2; 
 }
 a {
   text-decoration: none;
@@ -18,28 +18,21 @@ a:hover {
   text-decoration: none;
 }
 /*
-começa aqui
+começa aquiasdas
 */
-.esquerda{
-    float:left;
-    width: 20%
-}
 
-.direita{
-    width: 80%;
-}
 
 /*termina aqui*/
 
 
 /*--element start here--*/
 .element {
-    width: 53%;
+    width: 50%;
     margin:3em auto 0em;
 }
 .element h1 {
     font-size: 2.5em;
-    color: #fff;
+    color: #df4231;
     text-align: center;
     margin-bottom: 1em;
     font-weight: 400;
@@ -50,7 +43,7 @@ começa aqui
 }
 .element-block2-left {
     float: center;
-    width: 100%;
+    width: 80%;
 }
 .signin {
     background: #fff;
@@ -679,7 +672,7 @@ ul.with-login li {
 }
 @media(max-width:800px){
 .element {
-    width: 97%;
+    width: 50%;
 }	
 .mess input[type="text"] {
     width: 80%;
@@ -752,7 +745,7 @@ ul.with-login a.tw:hover {
 }
 .element-block2-left {
     float: none;
-    width: 69%;
+    width: 80%;
     margin: 0em auto 2em;
 }
 .element-block2-right {
@@ -915,7 +908,7 @@ span.checkbox1 {
 }
 .element-block2-left {
     float: none;
-    width: 100%;
+    width: 80%;
      margin: 0em auto 1em;
 }
 .element-block2 {
@@ -1027,7 +1020,7 @@ span.checkbox1 {
 }
 .element-block2-left {
     float: none;
-    width: 100%;
+    width: 80%;
 }
 .signin h5 {
     margin-bottom: 1em;

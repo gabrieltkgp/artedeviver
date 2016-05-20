@@ -21,16 +21,22 @@ class Components{
 	public function createEstadosDropDown(){
 		$this->queryEstados();
 
-		$oResult = $this->oStmt->get_result();
+		$this->oStmt->store_result();
 
-		$sDropDown = "<select id='selection_estados' name='estados'> ";
+      	$this->oStmt->bind_result($id, $sigla, $nome);
+
+		//$oResult = $this->oStmt->get_result();
+
+		$sDropDown = "<select id='selection_estados' name='idEstado'> ";
 		$sDropDown = $sDropDown . "<option value=''></option> ";
-		if($oResult->num_rows > 0) {
-			while($row = $oResult->fetch_assoc()){
-				$sDropDown = $sDropDown . "<option value=$row[id]>$row[sigla]</option> ";
+		if($this->oStmt->num_rows > 0) {
+			while($this->oStmt->fetch()){
+				$sDropDown = $sDropDown . "<option value=$id>$nome</option> ";
 			}
 		}
 		$sDropDown = $sDropDown . "</select> ";
+
+		$this->oStmt->free_result();
 
 		return $sDropDown;
 	}
@@ -45,22 +51,28 @@ class Components{
 	public function createCidadesDropDown($pnIdEstado){
 		$this->queryCidades($pnIdEstado);
 
-		$oResult = $this->oStmt->get_result();
+		$this->oStmt->store_result();
 
-		$sDropDown = "<select id='selection_cidades' name='cidades'> ";
-		if($oResult->num_rows > 0) {
-			while($row = $oResult->fetch_assoc()){
-				$sDropDown = $sDropDown . "<option value=$row[id]>$row[nome]</option> ";
+      	$this->oStmt->bind_result($id, $nome, $idEstado);
+
+		//$oResult = $this->oStmt->get_result();
+
+		$sDropDown = "<select id='selection_cidades' name='idCidade'> ";
+		if($this->oStmt->num_rows > 0) {
+			while($this->oStmt->fetch()){
+				$sDropDown = $sDropDown . "<option value=$id>$nome</option> ";
 			}
 		}
 		$sDropDown = $sDropDown . "</select> ";
+
+		$this->oStmt->free_result();
 
 		return $sDropDown;
 	}
 
 	public function createDropDownEmpty($psId, $psName){
 		
-		$sDropDown = "<select id=$psId name=$psName> ";
+		$sDropDown = "<select id='$psId' name='$psName'> ";
 		$sDropDown = $sDropDown . "</select> ";
 
 		return $sDropDown;

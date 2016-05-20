@@ -1,0 +1,37 @@
+.evento{
+	height: auto !important;
+	float: center;
+	width: 100%;
+}
+
+.campo{
+}
+
+.esquerda{
+    float:left;
+    width: 30%;
+    height: 100%
+    font-size: 1em;
+    word-wrap: break-word;
+}
+
+.direita{
+	float:left;
+	width: 70%;
+	height: 100%
+	font-size: 1em;
+	word-wrap: break-word;
+}
+
+@media(max-width:320px){
+
+.esquerda{
+	width: 50px;
+    font-size: 0.6em;
+}
+
+.direita{
+	font-size: 0.6em;
+}
+
+}

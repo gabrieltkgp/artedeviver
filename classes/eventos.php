@@ -39,7 +39,7 @@
 
 		public function setEndereco($endereco){
 			if ($endereco == null){
-				$this->endereco = '';
+				$this->endereco = '.';
 			}else{
 				$this->endereco = $endereco;	
 			}

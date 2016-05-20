@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
-<?php
-include_once("classes/tools.php");
-$oTools = new Tools();
-$oTools->isUserLogged();
-?>
+<!-- <?php
+// include_once("classes/tools.php");
+// $oTools = new Tools();
+// $oTools->isUserLogged();
+?> -->
 
 
 <html>
@@ -33,16 +33,16 @@ $oTools->isUserLogged();
 
         <div id="label_estado">Estado:</div>
         <?php 
-        include_once("classes/components.php");
-        $oType = new Components();
-        echo $oType->createEstadosDropDown();
+            include_once("classes/components.php");
+            $oType = new Components();
+            echo $oType->createEstadosDropDown();
         ?>
         <br>
         <div id="label_cidade">Cidade:</div>
         <?php 
-        include_once("classes/components.php");
-        $oType = new Components();
-        echo $oType->createDropDownEmpty("selection_cidades", "cidades");
+            include_once("classes/components.php");
+            $oType = new Components();
+            echo $oType->createDropDownEmpty("selection_cidades", "idCidade");
         ?>
         <div id="label_data">Data:</div>
         <input name="evento_data" type="date" />
@@ -53,33 +53,6 @@ $oTools->isUserLogged();
         <input type="radio" name="evento_privado" value="2" checked> Privado
         <br>
         <input value="Inserir evento" onclick="insertData();" type="button" /><br/>
-
-            <p>
-            Select Dropdown
-            </p>
-            <p>
-            <select id="selection">
-            <option value="">
-            Select Item Here
-            </option>
-            <option value="food">
-            List of Food
-            </option>
-            <option value="animals">
-            List of Animals
-            </option>
-            <option value="flowers">
-            List of Flowers
-            </option>
-            </select>
-            </p>
-            <p>
-            DropDown Result
-            </p>
-            <p>
-            <select id="selectionresult"></select>
-            </p>
-            <p id="result"></p>
     </form>
     <hr />
     <h2>Registros:</h2>

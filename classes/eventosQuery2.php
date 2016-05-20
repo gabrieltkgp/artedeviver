@@ -1,5 +1,5 @@
 <?php
-	include("eventos.php");
+	include_once("eventos.php");
   include_once("tools.php");
 
   class EventosQuery2{
@@ -25,6 +25,43 @@
 
     private function getSelectEmail(){
       return "SELECT e.email FROM lista_emails e WHERE e.email = ? ";
+    }
+
+    private function getSelectNomeCidade(){
+      return "SELECT c.id, c.nome FROM cidades c WHERE c.id = ? ";
+    }
+
+    public function ConsultarNomeCidade($pnIdCidade){
+      $oTools = new Tools();
+      
+      try {
+        $oConn = $oTools->getConn();
+      
+        $sSql = $this->getSelectNomeCidade();
+
+        $oStmt = $oConn->prepare($sSql);
+
+        $oStmt->bind_param('i', $pnIdCidade);
+
+        $oStmt->execute();
+
+        $oStmt->store_result();
+
+        $oStmt->bind_result($id, $nome);
+
+        $oStmt->fetch();
+
+        $oStmt->free_result();
+
+        $oStmt->close();
+
+        $oConn->close();
+
+      } catch(Exception $e){
+        echo 'Caught exception: '.  $e->getMessage(). "\n";
+      }
+
+      return $nome;
     }
 
     private function TestarSeEmailValido($psEmail){

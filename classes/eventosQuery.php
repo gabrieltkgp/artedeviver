@@ -29,6 +29,10 @@
       return "SELECT e.email FROM lista_emails e WHERE e.email = ? ";
     }
 
+    private function getCidadeNome(){
+      return "SELECT c.nome FROM cidades c WHERE c.id = ? ";
+    }
+
     private function TestarSeEmailValido($psEmail){
       $oTools = new Tools();
 

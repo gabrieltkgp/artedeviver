@@ -43,7 +43,7 @@ começa aquiasdas
 }
 .element-block2-left {
     float: center;
-    width: 80%;
+    width: 100%;
 }
 .signin {
     background: #fff;
@@ -672,7 +672,7 @@ ul.with-login li {
 }
 @media(max-width:800px){
 .element {
-    width: 50%;
+    width: 100%;
 }	
 .mess input[type="text"] {
     width: 80%;
@@ -745,14 +745,10 @@ ul.with-login a.tw:hover {
 }
 .element-block2-left {
     float: none;
-    width: 80%;
+    width: 100%;
     margin: 0em auto 2em;
 }
-.element-block2-right {
-    float: none;
-    width: 69%;
-    margin: 0 auto;
-}
+
 .small-contact {
     margin-top: 1em;
 }
@@ -908,7 +904,7 @@ span.checkbox1 {
 }
 .element-block2-left {
     float: none;
-    width: 80%;
+    width: 100%;
      margin: 0em auto 1em;
 }
 .element-block2 {
@@ -1020,7 +1016,7 @@ span.checkbox1 {
 }
 .element-block2-left {
     float: none;
-    width: 80%;
+    width: 100%;
 }
 .signin h5 {
     margin-bottom: 1em;
@@ -1199,9 +1195,7 @@ ul.with-login a.tw:hover {
     padding: 0.5em 1em;
     margin: 0.5em 0em;
 }
-.element-block2-right {
-    width: 100%;
-}
+
 .signup {
     padding: 1em;
 }

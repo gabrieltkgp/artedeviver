@@ -27,7 +27,7 @@ class Components{
 
 		//$oResult = $this->oStmt->get_result();
 
-		$sDropDown = "<select id='selection_estados' name='idEstado'> ";
+		$sDropDown = "<select id='selection_estados' name='idEstado' class='campo'> ";
 		$sDropDown = $sDropDown . "<option value=''></option> ";
 		if($this->oStmt->num_rows > 0) {
 			while($this->oStmt->fetch()){
@@ -57,7 +57,7 @@ class Components{
 
 		//$oResult = $this->oStmt->get_result();
 
-		$sDropDown = "<select id='selection_cidades' name='idCidade'> ";
+		$sDropDown = "<select id='selection_cidades' name='idCidade' class='campo'> ";
 		if($this->oStmt->num_rows > 0) {
 			while($this->oStmt->fetch()){
 				$sDropDown = $sDropDown . "<option value=$id>$nome</option> ";
@@ -72,7 +72,7 @@ class Components{
 
 	public function createDropDownEmpty($psId, $psName){
 		
-		$sDropDown = "<select id='$psId' name='$psName'> ";
+		$sDropDown = "<select id='$psId' name='$psName' class='campo'> ";
 		$sDropDown = $sDropDown . "</select> ";
 
 		return $sDropDown;

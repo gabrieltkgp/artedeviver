@@ -1,37 +1,23 @@
+.div_logo{
+	text-align: center;
+}
+
+.logo{
+	width: 20ex;
+	height: 20ex;
+}
+
 .evento{
-	height: auto !important;
-	float: center;
-	width: 100%;
+	padding: 10px 0 10px 0;
 }
 
 .campo{
+	width: 100%;
 }
 
-.esquerda{
-    float:left;
-    width: 30%;
-    height: 100%
-    font-size: 1em;
-    word-wrap: break-word;
-}
+@media(max-width:800px){
 
-.direita{
-	float:left;
-	width: 70%;
-	height: 100%
-	font-size: 1em;
-	word-wrap: break-word;
 }
 
 @media(max-width:320px){
-
-.esquerda{
-	width: 50px;
-    font-size: 0.6em;
-}
-
-.direita{
-	font-size: 0.6em;
-}
-
 }

@@ -28,7 +28,7 @@
     }
 
     private function getSelectNomeCidade(){
-      return "SELECT c.id, c.nome FROM cidades c WHERE c.id = ? ";
+      return "SELECT c.id, c.nome, e.sigla FROM cidades c JOIN estados e on e.id = c.id_estado WHERE c.id = ? ";
     }
 
     public function ConsultarNomeCidade($pnIdCidade){
@@ -47,7 +47,7 @@
 
         $oStmt->store_result();
 
-        $oStmt->bind_result($id, $nome);
+        $oStmt->bind_result($id, $nome, $sigla);
 
         $oStmt->fetch();
 
@@ -61,7 +61,7 @@
         echo 'Caught exception: '.  $e->getMessage(). "\n";
       }
 
-      return $nome;
+      return $nome . "/". $sigla;
     }
 
     private function TestarSeEmailValido($psEmail){

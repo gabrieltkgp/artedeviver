@@ -35,4 +35,10 @@ $(document).ready(function() {
             }
         });
     });
+
+    $("#pesquisar").submit(function() {
+        $('#email_input').reset();
+        $('#selection_estados').reset();
+        $('#selection_cidades').reset();
+    });
 });

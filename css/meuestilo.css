@@ -1,18 +1,61 @@
+@font-face {
+font-family: 'VistaSanLig';
+src: url('fonts/VistaSanLig.ttf');
+}
+
 .div_logo{
 	text-align: center;
 }
 
 .logo{
-	width: 20ex;
-	height: 20ex;
+	/*width: 40ex;*/
+	/*height: 20ex;*/
 }
 
 .evento{
 	padding: 10px 0 10px 0;
+	width: 100%;
+	height: auto;
 }
 
 .campo{
 	width: 100%;
+	height: auto;
+}
+
+.nome_evento{
+	width: 80%;
+	height: auto;
+	text-align: left;
+	float: left;
+}
+
+.data_evento{
+	width: 20%;
+	height: auto;
+	text-align: right;
+	float: left;
+}
+
+.hora_evento{
+	width: auto;
+	height: auto;
+	text-align: left;
+	float: left;
+}
+
+.local_evento{
+	width: auto;
+	height: auto;
+	text-align: left;
+	float: left;
+}
+
+.endereco_evento{
+	width: auto;
+	height: auto;
+	text-align: left;
+	float: left;
 }
 
 @media(max-width:800px){

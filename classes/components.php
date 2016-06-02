@@ -45,7 +45,7 @@ class Components{
 	}
 
 	private function queryCidades(){
-		return "SELECT id, nome, id_estado FROM cidades WHERE id_estado = ? ORDER BY nome";
+		return "SELECT id, nome, id_estado FROM cidades WHERE id_estado = ? ORDER BY id";
 	}
 	
 	public function createCidadesDropDown($pnIdEstado){

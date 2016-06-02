@@ -19,14 +19,27 @@ foreach($eventosArray as $evento){
 		$cor = "#F0FFFF";
 	}
 	echo "<div class='evento' style='background-color:$cor'>";
-	echo   "<div class='campo'>Evento: ". $evento->getNome() ."</div>";
-	echo   "<div class='campo'>Local: ". $evento->getLocal() ."</div>";
-	echo   "<div class='campo'>Endereço: ". $evento->getEndereco() ."</div>";
-	echo   "<div class='campo'>Observação: ". $evento->getObservacao() ."</div>";
-	echo   "<div class='campo'>Data: ". $evento->getData() ."</div>";
-	// echo   "<div class='campo'>Cidade: ". $evento->getNomeCidade() ."</div>";
-	// echo   "<div class='campo'>Estado: ". $evento->getNomeEstado() ."</div>";
-	// echo   "<br>";     
+	echo "<div class='campo'>";
+	echo 	"<div class='nome_evento'>". $evento->getNome() ."</div>";
+	echo 	"<div class='data_evento'>". $evento->getOnlyDate() ."</div>";
+	echo "</div>";
+	echo "<div class='campo'>";
+	echo 	"<div class='hora_evento'>". $evento->getOnlyTime() ."h - </div>";
+	echo 	"<div class='local_evento'> ". $evento->getLocal() ." - </div>";
+	echo 	"<div class='endereco_evento'> ". $evento->getEndereco() ." </div>";
+	echo "</div>";
+	
+	// if ($evento->getEndereco() != ''){
+		
+	// }
+	
+	// if ($evento->getObservacao() != ''){
+		echo "<div class='campo'>". $evento->getObservacao() ."</div>";
+	// }
+	
+	// $sHtmlEvento = $sHtmlEvento . "<div class='campo'>Cidade: ". $evento->getNomeCidade() ."</div>";
+	// $sHtmlEvento = $sHtmlEvento . "<div class='campo'>Estado: ". $evento->getNomeEstado() ."</div>";
+	// $sHtmlEvento = $sHtmlEvento . "<br>";     
 	echo "</div>";
 
 	$i++;

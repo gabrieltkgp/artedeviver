@@ -39,7 +39,7 @@
 
 		public function setEndereco($endereco){
 			if ($endereco == null){
-				$this->endereco = '.';
+				$this->endereco = '';
 			}else{
 				$this->endereco = $endereco;	
 			}
@@ -51,7 +51,7 @@
 
 		public function setObservacao($observacao){
 			if ($observacao == null){
-				$this->observacao = '.';
+				$this->observacao = '';
 			}else{
 				$this->observacao = $observacao;	
 			}			
@@ -67,6 +67,24 @@
 
 		public function getData(){
 			return $this->data;
+		}
+
+		public function getDateFormated(){
+			$datahora = strtotime($this->data);
+			return date("d/m/Y h:i:s", $datahora);
+		}
+
+		public function getOnlyDate(){
+			setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+			date_default_timezone_set('America/Sao_Paulo');
+			$datahora = strtotime($this->data);
+			return strftime('%d/%B', $datahora);
+			//return date("d - M ", $datahora);
+		}
+
+		public function getOnlyTime(){
+			$datahora = strtotime($this->data);
+			return date("h", $datahora);
 		}
 
 		public function setPrivado($privado){

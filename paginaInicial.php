@@ -26,31 +26,37 @@ header("Pragma: no-cache");
 <div class="element">
 	<div class="element-block2-left">
 		<div class="signin">	
-			<div class="div_logo"><img src="images/icone.jpg" class="logo"></div>	
+			<div class="div_logo"><img src="images/logo.png" class="logo"></div>	
 			<form action="listarEventos.php" method="post" id="form1">
 				<div>
-					<div id="email_label">E-mail:</div>
-					<input id="email_input" name="email" type="text" class="campo"/>
+					<div>
+						<div id="email_label">E-mail:</div>
+						<input id="email_input" name="email" type="text" class="campo"/>
+					</div>
 		
-					<div id="label_estado">Estado:</div>
-					<?php 
-						include_once("classes/components.php");
-						$oType = new Components();
-						echo $oType->createEstadosDropDown();
-					?>
+					<!-- <div id="label_estado">Estado:</div> -->
+					<!-- <?php
+						// include_once("classes/components.php");
+						// $oType = new Components();
+						// echo $oType->createEstadosDropDown();
+					?>  -->
 	    
 	    			<br>
-	    
-				    <div id="label_cidade">Cidade:</div>
-				    <?php 
-				    	include_once("classes/components.php");
-				    	$oType = new Components();
-				    	echo $oType->createDropDownEmpty("selection_cidades", "idCidade");
-				    ?>
+	    			<div>
+				   		<div id="label_cidade">Cidade:</div>
+					    <?php 
+					    	include_once("classes/components.php");
+					    	include_once("classes/constants.php");
+					    	$oType = new Components();
+					    	// echo $oType->createDropDownEmpty("selection_cidades", "idCidade");
+					    	echo $oType->createCidadesDropDown(SANTA_CATARINA);
+					    ?>
+				    </div>
 				    
 				    <br>
-
-				    <button type="submit" form="form1" value="Submit">Pesquisar</button>
+				    <div>
+				    	<button id="pesquisar" type="submit" form="form1" value="Submit">Pesquisar</button>
+				    </div>
 				</div>
 			</form>
 		</div>

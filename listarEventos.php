@@ -24,7 +24,7 @@ header("Pragma: no-cache");
 	
 		<div class="element-block2-left">
 			<div class="signin">
-				<div class="div_logo"><img src="images/icone.jpg" class="logo"></div>
+				<div class="div_logo"><img src="images/logo.png" class="logo"></div>
 				<?php include("nomeCidade.php"); ?>		
 				<?php include("eventosConsulta.php"); ?>
 			</div>

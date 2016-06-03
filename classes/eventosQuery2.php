@@ -6,13 +6,14 @@
 
     private function getSelectEventos($pbEmailValido){
       $sSql = "SELECT ".
-      "e.id, e.nome, e.local, e.endereco, e.observacao, e.data, e.privado, e.id_cidade, c.nome as nome_cidade, est.id as id_estado, est.nome as nome_estado ".
+      "e.id, e.nome, e.local, e.endereco, e.observacao, e.link, e.data, e.privado, e.id_cidade, c.nome as nome_cidade, est.id as id_estado, est.nome as nome_estado ".
       "FROM ".
       "eventos e ".
       "join cidades c on c.id = e.id_cidade ".
       "join estados est on est.id = c.id_estado ".
       "WHERE ".
-      "e.id_cidade = ? ";
+      "e.id_cidade = ? and ".
+      "e.data >= now()";
 
       if(!$pbEmailValido){
         $sSql = $sSql . " AND e.privado = 0"; 
@@ -113,7 +114,7 @@
 
       $oStmt->store_result();
 
-      $oStmt->bind_result($id, $nome, $local, $endereco, $observacao, $data, $privado, $id_cidade, $nome_cidade, $id_estado, $nome_estado);
+      $oStmt->bind_result($id, $nome, $local, $endereco, $observacao, $link, $data, $privado, $id_cidade, $nome_cidade, $id_estado, $nome_estado);
 
       if ($oStmt->num_rows > 0){
         $i = 1;
@@ -125,6 +126,7 @@
           $eventosArray[$i]->setLocal($local);   
           $eventosArray[$i]->setEndereco($endereco);
           $eventosArray[$i]->setObservacao($observacao);
+          $eventosArray[$i]->setLink($link);
           $eventosArray[$i]->setData($data);
           $eventosArray[$i]->setPrivado($privado);
           $eventosArray[$i]->setIdCidade($id_cidade);
@@ -152,6 +154,7 @@
       $eventosArray[$i]->setNome($row['nome']);      
       $eventosArray[$i]->setEndereco($row['endereco']);
       $eventosArray[$i]->setObservacao($row['observacao']);
+      $eventosArray[$i]->setLink($row['link']);
       $eventosArray[$i]->setData($row['data']);
       $eventosArray[$i]->setPrivado($row['privado']);
       $eventosArray[$i]->setIdCidade($row['id_cidade']);

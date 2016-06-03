@@ -6,6 +6,7 @@
 		private $local;
 		private $endereco;
 		private $observacao;
+		private $link;
 		private $data;
 		private $privado;
 		private $idCidade;
@@ -59,6 +60,18 @@
 
 		public function getObservacao(){
 			return $this->observacao;
+		}
+
+		public function setLink($link){
+			if ($link == null){
+				$this->link = '';
+			}else{
+				$this->link = $link;	
+			}
+		}
+
+		public function getLink(){
+			return $this->link;
 		}
 
 		public function setData($data){

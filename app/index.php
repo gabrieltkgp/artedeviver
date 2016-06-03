@@ -8,8 +8,8 @@ header("Pragma: no-cache");
 <html>
 <head>
 <title>Eventos Arte de Viver</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
-<link href="css/meuestilo.css" rel="stylesheet" type="text/css" media="all"/>
+<!-- <link href="../css/style.css" rel="stylesheet" type="text/css" media="all"/> -->
+<link href="../css/meuestilo.css" rel="stylesheet" type="text/css" media="all"/>
 <!-- Custom Theme files -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -19,19 +19,19 @@ header("Pragma: no-cache");
 <!--google fonts-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 <script type="text/javascript" src="jquery-1.3.2.min.js"></script>
-<script src="jquery/jquery.js"></script>
+<script src="../jquery/jquery.js"></script>
 </head>
 <body>
 
 <div class="element">
 	<div class="element-block2-left">
 		<div class="signin">	
-			<div class="div_logo"><img src="images/logo.png" class="logo"></div>	
-			<form action="listarEventos.php" method="post" id="form1">
-				<div>
-					<div>
-						<div id="email_label">E-mail:</div>
-						<input id="email_input" name="email" type="text" class="campo"/>
+			<div class="div_logo"><img src="../images/logo.png" class="logo"></div>	
+			<form action="listarEventos.php" method="post" id="form1" onSubmit="return ( valida_form() )">
+				<div class="dados_form">
+					<div class="email">
+						<div class="label">E-mail:</div>
+						<input id="email" name="email" type="text" class="campo"/>
 					</div>
 		
 					<!-- <div id="label_estado">Estado:</div> -->
@@ -42,11 +42,11 @@ header("Pragma: no-cache");
 					?>  -->
 	    
 	    			<br>
-	    			<div>
-				   		<div id="label_cidade">Cidade:</div>
+	    			<div class="cidade">
+				   		<div class="label">Cidade:</div>
 					    <?php 
-					    	include_once("classes/components.php");
-					    	include_once("classes/constants.php");
+					    	include_once("../classes/components.php");
+					    	include_once("../classes/constants.php");
 					    	$oType = new Components();
 					    	// echo $oType->createDropDownEmpty("selection_cidades", "idCidade");
 					    	echo $oType->createCidadesDropDown(SANTA_CATARINA);
@@ -54,8 +54,8 @@ header("Pragma: no-cache");
 				    </div>
 				    
 				    <br>
-				    <div>
-				    	<button id="pesquisar" type="submit" form="form1" value="Submit">Pesquisar</button>
+				    <div class="botao">
+				    	<button id="pesquisar" class="btn" type="submit" form="form1" value="Submit">Pesquisar</button>
 				    </div>
 				</div>
 			</form>

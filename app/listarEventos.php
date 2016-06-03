@@ -8,8 +8,8 @@ header("Pragma: no-cache");
 <html>
 <head>
 <title>Eventos Arte de Viver</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
-<link href="css/meuestilo.css" rel="stylesheet" type="text/css" media="all"/>
+<!-- <link href="../css/style.css" rel="stylesheet" type="text/css" media="all"/> -->
+<link href="../css/meuestilo.css" rel="stylesheet" type="text/css" media="all"/>
 <!-- Custom Theme files -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -21,12 +21,11 @@ header("Pragma: no-cache");
 </head>
 <body>
 <div class="element">
-	
 		<div class="element-block2-left">
 			<div class="signin">
-				<div class="div_logo"><img src="images/logo.png" class="logo"></div>
-				<?php include("nomeCidade.php"); ?>		
-				<?php include("eventosConsulta.php"); ?>
+				<div class="div_logo"><img src="../images/logo.png" class="logo"></div>
+				<div class="nome_cidade"><?php include("nomeCidade.php"); ?></div>		
+				<div class="todos_eventos"><?php include("eventosConsulta.php"); ?></div>
 			</div>
 		</div>
 </div>

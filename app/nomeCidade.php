@@ -1,5 +1,5 @@
 <?php
-include_once("classes/eventosQuery2.php");
+include_once("../classes/eventosQuery2.php");
 
 $eventosQuery = new EventosQuery2();
 

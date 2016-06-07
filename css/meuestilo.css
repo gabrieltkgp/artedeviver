@@ -51,9 +51,21 @@ html, body{
   text-decoration: none;
 }
 
+.trocar_email{
+  color: #FFA500;
+  font-family: 'VistaSanRegIta';
+  float: right;
+  /*margin-right: 40px;*/
+}
+
 .todos_eventos{
 
 }
+
+a:link 
+{ 
+  text-decoration:none; 
+} 
 
 .evento{
 	padding: 10px 0 10px 0;
@@ -125,7 +137,7 @@ html, body{
 /*style.css*/
 .element {
     width: 50%;
-    margin:3em auto 0em;
+    margin:0.5em auto 0em;
 }
 
 .element h1 {

@@ -1,7 +1,11 @@
 <?php
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Cache-Control: post-check=0, pre-check=0", false);
-header("Pragma: no-cache");
+// header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+// header("Cache-Control: post-check=0, pre-check=0", false);
+// header("Pragma: no-cache");
+
+if (isset($_COOKIE['email'])){
+	header("Location: listarEventos.php");
+}
 ?>
 
 <!DOCTYPE HTML>
@@ -27,7 +31,8 @@ header("Pragma: no-cache");
 	<div class="element-block2-left">
 		<div class="signin">	
 			<div class="div_logo"><img src="../images/logo.png" class="logo"></div>	
-			<form action="listarEventos.php" method="post" id="form1" onSubmit="return ( valida_form() )">
+			<!-- <form action="listarEventos.php" method="post" id="form1" onSubmit="return ( valida_form() )"> -->
+			 <form action="listarEventos.php" method="post" id="form1">
 				<div class="dados_form">
 					<div class="email">
 						<div class="label">E-mail:</div>

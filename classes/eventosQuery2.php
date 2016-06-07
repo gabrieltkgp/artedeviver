@@ -163,16 +163,16 @@
       $eventosArray[$i]->setNomeEstado($row['nome_estado']);
     }
 
-    private function testarEmailECidadeValidos($psEmail, $pnIdCidade){
-      return (!empty($psEmail) and !empty($pnIdCidade));  
-    }
+    // private function testarEmailECidadeValidos($psEmail, $pnIdCidade){
+    //   return (!empty($psEmail) and !empty($pnIdCidade));  
+    // }
 
     public function ConsultarEventosCadastrados($psEmail, $pnIdCidade){
 
-      if (!$this->testarEmailECidadeValidos($psEmail, $pnIdCidade)){
-        return null;
-        exit;
-      }
+      // if (!$this->testarEmailECidadeValidos($psEmail, $pnIdCidade)){
+      //   return null;
+      //   exit;
+      // }
 
       $pbEmailValido = $this->TestarSeEmailValido($psEmail);
 

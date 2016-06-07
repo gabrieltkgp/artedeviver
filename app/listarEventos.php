@@ -1,7 +1,26 @@
 <?php
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Cache-Control: post-check=0, pre-check=0", false);
-header("Pragma: no-cache");
+// header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+// header("Cache-Control: post-check=0, pre-check=0", false);
+// header("Pragma: no-cache");
+
+if (isset($_COOKIE['email']) and (!isset($_POST['email']))){
+	$_POST['email'] = $_COOKIE['email'];
+}
+
+if (isset($_COOKIE['idCidade']) and (!isset($_POST['idCidade']))){
+	$_POST['idCidade'] = $_COOKIE['idCidade'];
+}
+
+if (isset($_POST['email'])){
+	setcookie('email', $_POST['email'], (time()+3600*24*365));
+	// setcookie('email', $_POST['email']);
+}
+
+if (isset($_POST['idCidade'])){
+	setcookie('idCidade', $_POST['idCidade'], (time()+3600*24*365));
+	// setcookie('idCidade', $_POST['idCidade']);
+}
+
 ?>
 
 <!DOCTYPE HTML>
@@ -21,6 +40,7 @@ header("Pragma: no-cache");
 </head>
 <body>
 <div class="element">
+	<div class="trocar_email"><a href='trocarEmail.php'>Sair</a></div>
 		<div class="element-block2-left">
 			<div class="signin">
 				<div class="div_logo"><img src="../images/logo.png" class="logo"></div>

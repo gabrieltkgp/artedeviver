@@ -1,6 +1,11 @@
 @font-face {
 font-family: 'VistaSanRegIta';
 src: url('../fonts/VistaSanRegIta.ttf');
+
+font-family: 'Bree';
+src: url('../fonts/ufonts.com_bree-lightoblique-opentype.otf');
+src: url('../fonts/ufonts.com_bree-boldoblique-opentype.otf');
+src: url('../fonts/ufonts.com_bree-regular-opentype.otf');
 }
 
 html, body{
@@ -17,18 +22,34 @@ html, body{
 	/*height: 20ex;*/
 }
 
+.titulo{
+  padding: 10px 0 10px 0;
+  text-align: center;
+  color: #FFA500;
+  font-family: 'Bree';
+  font-size: 400%;
+}
+
+.texto{
+  padding: 10px 0 10px 0;
+  text-align: center;
+  font-family: 'Bree'; 
+  font-size: 150%; 
+}
+
 .nome_cidade{
 	color: #FFA500;
-	font-family: 'VistaSanRegIta';
+	font-family: 'Bree';
 }
 
 .label{
 	color: #FFA500;
-	font-family: 'VistaSanRegIta';	
+	font-family: 'Bree';
+  font-size: 20px;	
 }
 
 .botao{
-	text-align: center;
+	text-align: left;
 }
 .btn {
   background: #FFA500;
@@ -37,14 +58,16 @@ html, body{
   background-image: -ms-linear-gradient(top, #FFA500, #FFA500);
   background-image: -o-linear-gradient(top, #FFA500, #FFA500);
   background-image: linear-gradient(to bottom, #FFA500, #FFA500);
-  -webkit-border-radius: 12;
-  -moz-border-radius: 12;
-  border-radius: 12px;
-  font-family: Arial;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  /*font-family: Arial;*/
+  font-family: 'Bree';
   color: #ffffff;
-  font-size: 12px;
-  padding: 5px 10px 5px 10px;
+  font-size: 20px;
+  padding: 20px 20px 20px 20px;
   text-decoration: none;
+  border: 1px solid;
 }
 
 .btn:hover {
@@ -79,6 +102,11 @@ a:link
 	width: 100%;
 	height: auto;
 	display: table; /*faz com que a div circule por todas as divs filhas*/
+  border-radius: 8px;
+  border: 1px solid #000000;
+  padding: 10px 0 10px 0;
+  font-family: 'Bree';
+  font-size: 20px;
 }
 
 .nome_evento{

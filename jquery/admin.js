@@ -10,7 +10,7 @@ function uploadTask(id){
 
     $.ajax({
         type: "POST",
-        url: "classes/p2-admin-update-task.php",
+        url: "../classes/p2-admin-update-task.php",
         data: formData,
         processData: false,
         contentType: false,
@@ -49,7 +49,7 @@ function getById() {
     var id = document.getElementById("id").value;
     var result = document.getElementById("result");
     var XMLHttp = generateXMLHttp();
-    XMLHttp.open("get", "classes/getDataAdmin.php?id=" + id, true);
+    XMLHttp.open("get", "../admin/getDataAdmin.php?id=" + id, true);
     XMLHttp.onreadystatechange = function() {
         if (XMLHttp.readyState == 4)
             if (XMLHttp.status == 200) {
@@ -85,7 +85,7 @@ function insertData() {
     var result = document.getElementById("result");
 
     var XMLHttp = generateXMLHttp();
-    XMLHttp.open("post", "classes/inserirEventos.php", true);
+    XMLHttp.open("post", "../admin/inserirEvento.php", true);
     XMLHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     XMLHttp.onreadystatechange = function() {

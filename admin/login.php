@@ -5,7 +5,7 @@
     <title>Arte de Viver</title>
 </head>
 <body>
-    <div class="p2-main-content-title">LOGIN</div>
+    <div class="">LOGIN</div>
         <div>
             <form id="form_login" action="classes/validation.php" method="post">
                 <div style="width:100px;float:left;"> Login: </div>

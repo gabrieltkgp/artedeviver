@@ -10,8 +10,9 @@
 <html>
 <head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-<script type="text/javascript" src="jquery-1.3.2.min.js"></script>
-<script src="jquery/jquery.js"></script>
+<!-- <script type="text/javascript" src="jquery-1.3.2.min.js"></script> -->
+<script src="../jquery/jquery.js"></script>
+<script src="../jquery/admin.js"></script>
 
     <title>Arte de viver</title>
 </head>
@@ -33,17 +34,19 @@
 
         <div id="label_estado">Estado:</div>
         <?php 
-            include_once("classes/components.php");
+            include_once("../classes/components.php");
             $oType = new Components();
             echo $oType->createEstadosDropDown();
         ?>
         <br>
-        <div id="label_cidade">Cidade:</div>
-        <?php 
-            include_once("classes/components.php");
-            $oType = new Components();
-            echo $oType->createDropDownEmpty("selection_cidades", "idCidade");
-        ?>
+        <div class="cidade">
+            <div id="label_cidade">Cidade:</div>
+            <?php 
+                include_once("../classes/components.php");
+                $oType = new Components();
+                echo $oType->createDropDownEmpty("selection_cidades", "idCidade");
+            ?>
+        </div>
         <div id="label_data">Data:</div>
         <input name="evento_data" type="date" />
         <input name="evento_hora" type="time" />
@@ -57,6 +60,5 @@
     <hr />
     <h2>Registros:</h2>
     <div id="resultdiv"></div>
-
 </body>
 </html>

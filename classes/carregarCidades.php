@@ -4,6 +4,6 @@
 
 		include_once("components.php");
         $oComponent = new Components();
-        echo $oComponent->createCidadesDropDown($idEstado);
+        echo $oComponent->createCidadesDropDown($idEstado, false);
 	}
 ?>

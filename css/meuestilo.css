@@ -11,6 +11,7 @@ src: url('../fonts/ufonts.com_bree-regular-opentype.otf');
 html, body{
    font-size: 100%;
    background:#F2F2F2; 
+   /*min-width: 320px; */
 }
 
 .div_logo{
@@ -25,7 +26,7 @@ html, body{
 .titulo{
   padding: 10px 0 10px 0;
   text-align: center;
-  color: #FFA500;
+  color: #ffb300;
   font-family: 'Bree';
   font-size: 400%;
 }
@@ -35,15 +36,17 @@ html, body{
   text-align: center;
   font-family: 'Bree'; 
   font-size: 150%; 
+  color: #9f9f9f;
 }
 
 .nome_cidade{
-	color: #FFA500;
+	color: #ffb300;
+  text-align: center;
 	font-family: 'Bree';
 }
 
 .label{
-	color: #FFA500;
+	color: #ffb300;
 	font-family: 'Bree';
   font-size: 20px;	
 }
@@ -52,7 +55,8 @@ html, body{
 	text-align: left;
 }
 .btn {
-  background: #FFA500;
+  /*background: #FFA500;*/
+  background: #ffb300;
   background-image: -webkit-linear-gradient(top, #FFA500, #FFA500);
   background-image: -moz-linear-gradient(top, #FFA500, #FFA500);
   background-image: -ms-linear-gradient(top, #FFA500, #FFA500);
@@ -76,7 +80,7 @@ html, body{
 
 .trocar_email{
   color: #FFA500;
-  font-family: 'VistaSanRegIta';
+  font-family: 'Bree';
   float: right;
   /*margin-right: 40px;*/
 }
@@ -95,7 +99,7 @@ a:link
 	width: 100%;
 	height: auto;
 	display: table; /*faz com que a div circule por todas as divs filhas*/
-	font-family: 'VistaSanRegIta';
+	font-family: 'Bree';
 }
 
 .campo{
@@ -109,16 +113,29 @@ a:link
   font-size: 20px;
 }
 
+.resultado{
+  width: 100%;
+  height: auto;
+  display: table; /*faz com que a div circule por todas as divs filhas*/
+  border-radius: 8px;
+  /*border: 1px solid #000000;*/
+  /*padding: 10px 0 10px 0;*/
+  font-family: 'Bree';
+  font-size: 20px;
+}
+
 .nome_evento{
-	width: 70%;
+	width: 60%;
 	text-align: left;
 	float: left;
+  font-family: 'Bree';
 }
 
 .data_evento{
 	/*width: 20%;*/
 	text-align: right;
 	margin-left: 70%;
+  font-family: 'Bree';
 }
 
 .hora_evento{
@@ -127,6 +144,8 @@ a:link
 	float: left;
 	color: #FFA500;
 	font-style: italic;
+  font-size: 80%;
+  font-family: 'Bree';
 }
 
 .local_evento{
@@ -135,6 +154,8 @@ a:link
 	float: left;
 	color: #FFA500;
 	font-style: italic;
+  font-size: 80%;
+  font-family: 'Bree';
 }
 
 .endereco_evento{
@@ -143,6 +164,8 @@ a:link
 	float: left;
 	color: #FFA500;
 	font-style: italic;
+  font-size: 80%;
+  font-family: 'Bree';
 }
 
 .observacao_evento{
@@ -151,6 +174,8 @@ a:link
 	float: none;
 	color: #FFA500;
 	font-style: italic;
+  font-size: 80%;
+  font-family: 'Bree';
 }
 
 .link_evento{
@@ -159,6 +184,7 @@ a:link
 	float: none;
 	color: #FFA500;
 	font-style: italic;
+  font-family: 'Bree';
 }
 
 
@@ -247,7 +273,7 @@ a:link
 
 @media(max-width:320px){
 html, body{
-   font-size: 85%;
+   font-size: 70%;
 }
 
 .element {
@@ -259,7 +285,12 @@ html, body{
 }
 
 .link_evento{
-	font-size: 0.8em;
+	font-size: 0.6em;
+}
+
+@media(max-width:300px){
+html, body{
+   font-size: 50%;
 }
 
 

@@ -32,7 +32,7 @@ if (isset($_COOKIE['email'])){
 	<div class="element-block2-left">
 		<div class="signin">	
 			<div class="div_logo"><img src="../images/icone2.png" class="logo"></div>	
-			<div class="titulo">SC Respira</div>
+			<div class="titulo">Respira</div>
 			<div class="texto">Aulas gratuitas de <b>Yoga</b> e <b>Meditação</b>, Cursos para desenvolvimento pessoal e eventos da Arte de Viver.</div>
 			<!-- <form action="listarEventos.php" method="post" id="form1" onSubmit="return ( valida_form() )"> -->
 			 <form action="listarEventos.php" method="post" id="form1">

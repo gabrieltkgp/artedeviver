@@ -45,10 +45,10 @@ class Components{
 	}
 
 	private function queryCidades(){
-		return "SELECT id, nome, id_estado FROM cidades WHERE id_estado = ? ORDER BY id";
+		return "SELECT c.id, c.nome, c.id_estado, e.sigla FROM cidades c JOIN estados e on e.id = c.id_estado WHERE c.id_estado = ? ORDER BY e.sigla, c.id";
 	}
 	
-	public function createCidadesDropDown($pnIdEstado){
+	public function createCidadesDropDown($pnIdEstado, $pbExibirEstado=true){
 		$oConn = $this->oTools->getConn();
 
 		$oStmt = $oConn->prepare($this->queryCidades());
@@ -57,14 +57,19 @@ class Components{
 
 		$oStmt->store_result();
 
-      	$oStmt->bind_result($id, $nome, $idEstado);
+      	$oStmt->bind_result($id, $nome, $idEstado, $sigla);
 
 		//$oResult = $this->oStmt->get_result();
 
 		$sDropDown = "<select id='selection_cidades' name='idCidade' class='campo'> ";
 		if($oStmt->num_rows > 0) {
 			while($oStmt->fetch()){
-				$sDropDown = $sDropDown . "<option value=$id>$nome</option> ";
+				if ($pbExibirEstado) {
+					$sDropDown = $sDropDown . "<option value=$id>$sigla/$nome</option> ";
+				} else{
+					$sDropDown = $sDropDown . "<option value=$id>$nome</option> ";	
+				}
+				
 			}
 		}
 		$sDropDown = $sDropDown . "</select> ";

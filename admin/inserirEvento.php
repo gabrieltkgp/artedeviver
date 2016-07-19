@@ -1,14 +1,20 @@
 <?php
 include_once("eventosOperacoes.php");
  
-$task_name = $_POST['task_name'];
-$task_description = $_POST['task_description'];
-$type_id = $_POST['type_id'];
-$feature_id = $_POST['feat_id'];
+$evento_nome = $_POST['evento_nome'];
+$evento_local = $_POST['evento_local'];
+$evento_endereco = $_POST['evento_endereco'];
+$evento_observacao = $_POST['evento_observacao'];
+$id_estado = $_POST['idEstado'];
+$id_cidade = $_POST['idCidade'];
+$evento_data = $_POST['evento_data'];
+$evento_hora = $_POST['evento_hora'];
+$evento_privado = $_POST['evento_privado'];
+$evento_link = $_POST['evento_link'];
 
-$taskOperation = new eventosOperacoes();
+$eventosOperacoes = new eventosOperacoes();
 
-$bSuccess = $taskOperation->executeInsert($feature_id, $task_name, $task_description, $type_id);
+$bSuccess = $eventosOperacoes->executeInsert($evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_estado, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link);
   
 if($bSuccess){
 	$return = "Novo evento inserido com sucesso!";

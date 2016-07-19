@@ -47,7 +47,7 @@ function generateXMLHttp() {
 
 function getById() {
     var id = document.getElementById("id").value;
-    var result = document.getElementById("result");
+    var result = document.getElementById("resultdiv");
     var XMLHttp = generateXMLHttp();
     XMLHttp.open("get", "../admin/getDataAdmin.php?id=" + id, true);
     XMLHttp.onreadystatechange = function() {
@@ -82,7 +82,7 @@ function generateFieldsValues(formInsert) {
 function insertData() {
     var formInsert = document.forms[0];
     var fieldsValues = generateFieldsValues(formInsert);
-    var result = document.getElementById("result");
+    var result = document.getElementById("resultdiv");
 
     var XMLHttp = generateXMLHttp();
     XMLHttp.open("post", "../admin/inserirEvento.php", true);

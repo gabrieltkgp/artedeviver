@@ -43,7 +43,7 @@ if (isset($_POST['idCidade'])){
 	<div class="trocar_email"><a href='trocarEmail.php'>Sair</a></div>
 		<div class="element-block2-left">
 			<div class="signin">
-				<div class="div_logo"><img src="../images/logo.png" class="logo"></div>
+				<div class="div_logo"><img src="../images/icone2.png" class="logo"></div>
 				<div class="nome_cidade"><?php include("nomeCidade.php"); ?></div>		
 				<div class="todos_eventos"><?php include("eventosConsulta.php"); ?></div>
 			</div>

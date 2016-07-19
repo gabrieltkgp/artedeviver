@@ -1,6 +1,7 @@
 <?php
 include_once("../classes/tools.php");
 include_once("../classes/constants.php");
+include_once("../classes/eventos.php");
 
 class EventosOperacoes{
 
@@ -13,15 +14,15 @@ class EventosOperacoes{
 	}
 
 	// BEGIN INSERT
-	private function insertNewEvento(&$pnId, $psNome, $psLocal, $psEndereco, $psObservacao, $pnData, $pnIdCidade, $pnPrivado, $psLink){
+	private function insertNewEvento(&$pnId, $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link){
 		$sSql = "INSERT INTO " .
 			"eventos " .
-			"(nome, local, endereco, observacao, data, id_cidade, privado, link) " .
+			"(nome, local, endereco, observacao, id_cidade, data, privado, link) " .
 			"VALUES " .
 			"(?, ?, ?, ?, ?, ?, ?, ?)";
 
 		$oStmt = $this->oConn->prepare($sSql);
-		$oStmt->bind_param('ssssiiis', $psNome, $psLocal, $psEndereco, $psObservacao, $pnData, $pnIdCidade, $pnPrivado, $psLink);
+		$oStmt->bind_param('ssssiiis', $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_privado, $evento_link);
 
 		$bSuccess = $oStmt->execute();
 
@@ -32,7 +33,7 @@ class EventosOperacoes{
 		return $bSuccess;
 	}
 
-	private function testIfParametersAreValid($psNome, $psLocal, $psEndereco, $psObservacao, $pnData, $pnIdCidade, $pnPrivado, $psLink){
+	private function testIfParametersAreValid($evento_nome, $evento_local, $id_estado, $id_cidade, $evento_data, $evento_hora){
 		
 		// if (empty($pnFeatureId)){
 		// 	return false;
@@ -61,9 +62,9 @@ class EventosOperacoes{
 		return true;
 	}
 
-	public function executeInsert($psNome, $psLocal, $psEndereco, $psObservacao, $pnData, $pnIdCidade, $pnPrivado, $psLink){
+	public function executeInsert($evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_estado, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link){
 
-		if (!$this->testIfParametersAreValid($psNome, $psLocal, $psEndereco, $psObservacao, $pnData, $pnIdCidade, $pnPrivado, $psLink)){
+		if (!$this->testIfParametersAreValid($evento_nome, $evento_local, $id_estado, $id_cidade, $evento_data, $evento_hora)){
 			echo "missing information.";
 			return false;
 		}
@@ -73,7 +74,7 @@ class EventosOperacoes{
 		try{
 			$nId = 0;
 
-			$bSuccess = $this->insertNewEvento($nId, $psNome, $psLocal, $psEndereco, $psObservacao, $pnData, $pnIdCidade, $pnPrivado, $psLink);
+			$bSuccess = $this->insertNewEvento($nId, $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_estado, $id_cidade, $evento_data . $evento_hora, $evento_privado, $evento_link);
 
 			if ($bSuccess){
 				//$this->oConn->commit();
@@ -81,7 +82,7 @@ class EventosOperacoes{
 			}
 			else{
 				//$this->oConn->rollback();	
-				echo "something wrong happened.";
+				echo "ocorreu um erro.";
 			}
 		} catch(Exception  $e){
 			//$this->oConn->rollback();
@@ -96,14 +97,14 @@ class EventosOperacoes{
 	// END INSERT
 
 	// BEGIN QUERY
-	private function getSelectTextEvento($pnId){
+	private function getSelectTextEvento($pnEventoId){
     	$select = "SELECT " .
-        	"eve.id, eve.nome, eve.local, eve.endereco, eve.observacao, eve.data, eve.id_cidade, eve.privado, eve.link " .
+        	"eve.id, eve.nome, eve.local, eve.endereco, eve.observacao, eve.data, eve.id_cidade, eve.privado, eve.link, cid.id_estado " .
         	"FROM " .
-        	"eventos eve" .
-        	"JOIN cidades cid on cid.id = eve.id_cidade ";
+        	"eventos eve " .
+        	"JOIN cidades cid ON cid.id = eve.id_cidade ";
 
-    	if(!empty($pnTaskId)){
+    	if(!empty($pnEventoId)){
         	$select = $select .
         		"WHERE " .
         		"eve.id = ? ";
@@ -112,24 +113,28 @@ class EventosOperacoes{
     	return $select;
     }
 
-    private function setTasksArray(&$paTasksArray, $i, $row){
-      $paTasksArray[$i] = new Tasks();
+    private function setEventosArray(&$paEventosArray, $i, $row){
+      $paEventosArray[$i] = new Eventos();
 
-      $paTasksArray[$i]->setId($row['task_id']);
-      $paTasksArray[$i]->setName($row['task_name']);      
-      $paTasksArray[$i]->setDescription($row['task_description']);
-      $paTasksArray[$i]->setTypeId($row['type_id']);
-      $paTasksArray[$i]->setTypeName($row['type_name']);
-      $paTasksArray[$i]->setActive($row['task_active']);
+      $paEventosArray[$i]->setId($row['id']);
+      $paEventosArray[$i]->setNome($row['nome']);      
+      $paEventosArray[$i]->setLocal($row['local']);
+      $paEventosArray[$i]->setEndereco($row['endereco']);
+      $paEventosArray[$i]->setObservacao($row['observacao']);
+      $paEventosArray[$i]->setLink($row['link']);
+      $paEventosArray[$i]->setData($row['data']);
+      $paEventosArray[$i]->setPrivado($row['privado']);
+      $paEventosArray[$i]->setIdCidade($row['id_cidade']);
+      $paEventosArray[$i]->setIdEstado($row['id_estado']);
     }
 
-	private function queryTasks($pnTaskId){
+	private function queryEventos($pnEventoId){
 
-		$sSql = $this->getSelectTextTask($pnTaskId);
+		$sSql = $this->getSelectTextEvento($pnEventoId);
 		$oStmt = $this->oConn->prepare($sSql);
 
-		if(!empty($pnTaskId)){
-    		$oStmt->bind_param('i', $pnTaskId);
+		if(!empty($pnEventoId)){
+    		$oStmt->bind_param('i', $pnEventoId);
     	}
 		
 		$oStmt->execute();
@@ -137,22 +142,22 @@ class EventosOperacoes{
 		return $oStmt->get_result(); 
     }
 
-    public function executeQuery($pnTaskId){
+    public function executeQuery($pnEventoId){
 
-     	$oResult = $this->queryTasks($pnTaskId);
+     	$oResult = $this->queryEventos($pnEventoId);
 
-     	$tasksArray = array();
+     	$eventosArray = array();
 
 		if($oResult->num_rows > 0) {
 			$i = 1;
 
 			while($row = $oResult->fetch_assoc()){
-			  $this->setTasksArray($tasksArray, $i, $row);
+			  $this->setEventosArray($eventosArray, $i, $row);
 			  $i = $i + 1;
 			}
 		}
 
-      return $tasksArray;
+      return $eventosArray;
     } 
 	// END QUERY
 

@@ -26,13 +26,19 @@
     <hr />
     <h2>Inserir novo evento:</h2>
     <form action="admin.php">
-        <div id="label_nome">Nome:</div>
+        <div class="label">Nome:</div>
         <input name="evento_nome" type="text" />
 
-        <div id="label_local">Local:</div>
+        <div class="label">Local:</div>
         <input name="evento_local" type="text" />
 
-        <div id="label_estado">Estado:</div>
+        <div class="label">Endereço:</div>
+        <input name="evento_endereco" type="text" />
+
+        <div class="label">Observação:</div>
+        <input name="evento_observacao" type="text" />
+
+        <div class="label">Estado:</div>
         <?php 
             include_once("../classes/components.php");
             $oType = new Components();
@@ -47,13 +53,17 @@
                 echo $oType->createDropDownEmpty("selection_cidades", "idCidade");
             ?>
         </div>
-        <div id="label_data">Data:</div>
+        <div class="label">Data:</div>
         <input name="evento_data" type="date" />
         <input name="evento_hora" type="time" />
 
-        <div id="label_abrangencia">Abrangencia:</div>
+        <div class="label">Abrangencia:</div>
         <input type="radio" name="evento_privado" value="1" > Publico
         <input type="radio" name="evento_privado" value="2" checked> Privado
+        
+        <div class="label">Link:</div>
+        <input name="evento_link" type="text" />
+        
         <br>
         <input value="Inserir evento" onclick="insertData();" type="button" /><br/>
     </form>

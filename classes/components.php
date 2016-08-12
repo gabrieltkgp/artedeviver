@@ -26,7 +26,7 @@ class Components{
 
 		//$oResult = $this->oStmt->get_result();
 
-		$sDropDown = "<select id='selection_estados' name='idEstado' class='campo'> ";
+		$sDropDown = "<select id='selection_estados' name='idEstado' class='combobox'> ";
 		$sDropDown = $sDropDown . "<option value=''></option> ";
 		if($oStmt->num_rows > 0) {
 			while($oStmt->fetch()){
@@ -45,14 +45,16 @@ class Components{
 	}
 
 	private function queryCidades(){
-		return "SELECT c.id, c.nome, c.id_estado, e.sigla FROM cidades c JOIN estados e on e.id = c.id_estado WHERE c.id_estado = ? ORDER BY e.sigla, c.id";
+		// return "SELECT c.id, c.nome, c.id_estado, e.sigla FROM cidades c JOIN estados e on e.id = c.id_estado WHERE c.id_estado = ? ORDER BY e.sigla, c.id";
+		return "SELECT c.id, c.nome, c.id_estado, e.sigla FROM cidades c JOIN estados e on e.id = c.id_estado ORDER BY e.sigla, c.nome";
 	}
 	
-	public function createCidadesDropDown($pnIdEstado, $pbExibirEstado=true){
+	// public function createCidadesDropDown($pnIdEstado, $pbExibirEstado=true){
+	public function createCidadesDropDown($pbExibirEstado=true){
 		$oConn = $this->oTools->getConn();
 
 		$oStmt = $oConn->prepare($this->queryCidades());
-	   	$oStmt->bind_param('i', $pnIdEstado);	
+	   	// $oStmt->bind_param('i', $pnIdEstado);	
 		$oStmt->execute();
 
 		$oStmt->store_result();
@@ -61,7 +63,7 @@ class Components{
 
 		//$oResult = $this->oStmt->get_result();
 
-		$sDropDown = "<select id='selection_cidades' name='idCidade' class='campo'> ";
+		$sDropDown = "<select id='selection_cidades' name='idCidade' class='combobox'> ";
 		if($oStmt->num_rows > 0) {
 			while($oStmt->fetch()){
 				if ($pbExibirEstado) {
@@ -85,7 +87,7 @@ class Components{
 
 	public function createDropDownEmpty($psId, $psName){
 		
-		$sDropDown = "<select id='$psId' name='$psName' class='campo'> ";
+		$sDropDown = "<select id='$psId' name='$psName' class='combobox'> ";
 		$sDropDown = $sDropDown . "</select> ";
 
 		return $sDropDown;

@@ -62,7 +62,8 @@
         echo 'Caught exception: '.  $e->getMessage(). "\n";
       }
 
-      return $nome . " / ". $sigla;
+      // return $nome . " / ". $sigla;
+      return $sigla . "/". $nome;
     }
 
     private function TestarSeEmailValido($psEmail){

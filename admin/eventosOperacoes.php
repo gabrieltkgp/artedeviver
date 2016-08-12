@@ -21,8 +21,10 @@ class EventosOperacoes{
 			"VALUES " .
 			"(?, ?, ?, ?, ?, ?, ?, ?)";
 
+		$datahora = $evento_data . " " . $evento_hora . ":00";
+
 		$oStmt = $this->oConn->prepare($sSql);
-		$oStmt->bind_param('ssssiiis', $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_privado, $evento_link);
+		$oStmt->bind_param('ssssisis', $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $datahora, $evento_privado, $evento_link);
 
 		$bSuccess = $oStmt->execute();
 
@@ -33,7 +35,7 @@ class EventosOperacoes{
 		return $bSuccess;
 	}
 
-	private function testIfParametersAreValid($evento_nome, $evento_local, $id_estado, $id_cidade, $evento_data, $evento_hora){
+	private function testIfParametersAreValid($evento_nome, $evento_local, $id_cidade, $evento_data, $evento_hora){
 		
 		// if (empty($pnFeatureId)){
 		// 	return false;
@@ -62,9 +64,9 @@ class EventosOperacoes{
 		return true;
 	}
 
-	public function executeInsert($evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_estado, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link){
+	public function executeInsert($evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link){
 
-		if (!$this->testIfParametersAreValid($evento_nome, $evento_local, $id_estado, $id_cidade, $evento_data, $evento_hora)){
+		if (!$this->testIfParametersAreValid($evento_nome, $evento_local, $id_cidade, $evento_data, $evento_hora)){
 			echo "missing information.";
 			return false;
 		}
@@ -74,16 +76,8 @@ class EventosOperacoes{
 		try{
 			$nId = 0;
 
-			$bSuccess = $this->insertNewEvento($nId, $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_estado, $id_cidade, $evento_data . $evento_hora, $evento_privado, $evento_link);
+			$bSuccess = $this->insertNewEvento($nId, $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link);
 
-			if ($bSuccess){
-				//$this->oConn->commit();
-				echo "novo evento inserido com sucesso.";
-			}
-			else{
-				//$this->oConn->rollback();	
-				echo "ocorreu um erro.";
-			}
 		} catch(Exception  $e){
 			//$this->oConn->rollback();
 

@@ -37,7 +37,7 @@ if (isset($_COOKIE['email'])){
 			<!-- <form action="listarEventos.php" method="post" id="form1" onSubmit="return ( valida_form() )"> -->
 			 <form action="listarEventos.php" method="post" id="form1">
 				<div class="dados_form">
-					<div class="email">
+					<div class="codigo">
 						<div class="label">CÓDIGO DE ACESSO:</div>
 						<input id="email" name="email" type="text" class="campo"/>
 					</div>
@@ -57,7 +57,8 @@ if (isset($_COOKIE['email'])){
 					    	include_once("../classes/constants.php");
 					    	$oType = new Components();
 					    	// echo $oType->createDropDownEmpty("selection_cidades", "idCidade");
-					    	echo $oType->createCidadesDropDown(SANTA_CATARINA);
+					    	// echo $oType->createCidadesDropDown(SANTA_CATARINA);
+					    	echo $oType->createCidadesDropDown();
 					    ?>
 				    </div>
 				    

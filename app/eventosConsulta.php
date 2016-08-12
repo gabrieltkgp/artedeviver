@@ -23,27 +23,31 @@ foreach($eventosArray as $evento){
 	echo "<div id=div_$i class='evento'>";
 	echo "<div class='resultado'>";
 	echo 	"<div class='nome_evento'>". $evento->getNome() ."</div>";
-	echo 	"<div class='data_evento'>". $evento->getOnlyDate() ."</div>";
+	// echo 	"<div class='data_evento'>". $evento->getOnlyDate() ."</div>";
 	echo "</div>";
 	echo "<div class='resultado'>";
-	echo 	"<div class='hora_evento'>". $evento->getOnlyTime() ."h </div>";
-	echo 	"<div class='local_evento'> &nbsp;-&nbsp;". $evento->getLocal() ." </div>";
+	echo 	"<div class='data_evento'>". strtoupper ($evento->getOnlyDate()) ."</div>";
+	// echo 	"<div class='hora_evento'> | ". $evento->getOnlyTime() ."h </div>";
+	echo 	"<div class='hora_evento'> | ". strtoupper ($evento->getOnlyTime()) ."h &nbsp;-&nbsp;". strtoupper ($evento->getLocal()) ."</div>";
+	echo "</div>";
+	echo "<div class='resultado'>";
+	// echo 	"<div class='local_evento'> &nbsp;-&nbsp;". $evento->getLocal() ." </div>";
 	
 	if ($evento->getEndereco() != ''){
-		echo 	"<div class='endereco_evento'> &nbsp;-&nbsp;". $evento->getEndereco() ." </div>";	
+		echo 	"<div class='endereco_evento'>". strtoupper ($evento->getEndereco()) ." </div>";	
 	}
 
 	echo "</div>";
 	
 	if ($evento->getObservacao() != ''){
 		echo "<div class='resultado'>";
-			echo "<div class='observacao_evento'>". $evento->getObservacao() ."</div>";
+			echo "<div class='observacao_evento'>". strtoupper ($evento->getObservacao()) ."</div>";
 		echo "</div>";
 	 }
 
 	 if ($evento->getLink() != ''){
 		echo "<div class='resultado'>";
-			echo "<div class='link_evento'><a href='". $evento->getLink() ."' target='_blanck'>".$evento->getLink()."</a></div>";
+			echo "<div class='link_evento'><a href='". $evento->getLink() ."' target='_blanck'> CONFIRA MAIS INFORMAÇÕES >> </a></div>";
 		echo "</div>";
 	 }
 	
@@ -51,6 +55,7 @@ foreach($eventosArray as $evento){
 	// $sHtmlEvento = $sHtmlEvento . "<div class='resultado'>Estado: ". $evento->getNomeEstado() ."</div>";
 	// $sHtmlEvento = $sHtmlEvento . "<br>";     
 	echo "</div>";
+	echo "<br>";
 
 	$i++;
 }

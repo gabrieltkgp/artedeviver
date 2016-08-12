@@ -32,10 +32,10 @@
         <div class="label">Local:</div>
         <input name="evento_local" type="text" />
 
-        <div class="label">Endereço:</div>
+        <div class="label">Endereco:</div>
         <input name="evento_endereco" type="text" />
 
-        <div class="label">Observação:</div>
+        <div class="label">Observacao:</div>
         <input name="evento_observacao" type="text" />
 
         <div class="label">Estado:</div>

@@ -6,7 +6,7 @@ function uploadTask(id){
     //var form = document.getElementById(id);
     var form = $('#form_' + id)[0];
     var formData = new FormData(form);
-    formData.append("task_id", id);
+    formData.append("evento_id", id);
 
     $.ajax({
         type: "POST",

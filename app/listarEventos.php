@@ -40,7 +40,7 @@ if (isset($_POST['idCidade'])){
 </head>
 <body>
 <div class="element">
-	<div class="trocar_email"><a href='trocarEmail.php'>Sair</a></div>
+	<div class="trocar_email"><a href='trocarEmail.php'>X</a></div>
 		<div class="element-block2-left">
 			<div class="signin">
 				<div class="div_logo"><img src="../images/icone2.png" class="logo"></div>

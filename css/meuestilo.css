@@ -19,36 +19,39 @@ html, body{
 }
 
 .logo{
-	/*width: 40ex;*/
-	/*height: 20ex;*/
+	width: 35ex;
+	height: 35ex;
 }
 
 .titulo{
   padding: 10px 0 10px 0;
   text-align: center;
-  color: #ffb300;
+  /*color: #ffb300;*/
+  color: #ffdf00;
   font-family: 'Bree';
-  font-size: 400%;
+  font-size: 300%;
 }
 
 .texto{
   padding: 10px 0 10px 0;
   text-align: center;
   font-family: 'Bree'; 
-  font-size: 150%; 
+  font-size: 120%; 
   color: #9f9f9f;
 }
 
 .nome_cidade{
-	color: #ffb300;
+	padding: 10px 0 10px 0;
   text-align: center;
-	font-family: 'Bree';
+  color: #696969;
+  font-family: 'Bree';
+  font-size: 200%;
 }
 
 .label{
 	color: #ffb300;
 	font-family: 'Bree';
-  font-size: 20px;	
+  font-size: 15px;	
 }
 
 .botao{
@@ -64,12 +67,12 @@ html, body{
   background-image: linear-gradient(to bottom, #FFA500, #FFA500);
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
-  border-radius: 8px;
+  border-radius: 6px;
   /*font-family: Arial;*/
   font-family: 'Bree';
   color: #ffffff;
-  font-size: 20px;
-  padding: 20px 20px 20px 20px;
+  font-size: 15px;
+  padding: 10px 10px 10px 10px;
   text-decoration: none;
   border: 1px solid;
 }
@@ -79,10 +82,11 @@ html, body{
 }
 
 .trocar_email{
-  color: #FFA500;
+  color: #d3d3d3;
   font-family: 'Bree';
   float: right;
   /*margin-right: 40px;*/
+  text-decoration: none;
 }
 
 .todos_eventos{
@@ -91,8 +95,20 @@ html, body{
 
 a:link 
 { 
-  text-decoration:none; 
+  text-decoration: none; 
+  color: #d3d3d3;
 } 
+
+a:visited 
+{ 
+  text-decoration: none; 
+  color: #d3d3d3;
+} 
+
+a:hover {
+  text-decoration: none;
+  color: #d3d3d3;
+}
 
 .evento{
 	padding: 10px 0 10px 0;
@@ -100,21 +116,35 @@ a:link
 	height: auto;
 	display: table; /*faz com que a div circule por todas as divs filhas*/
 	font-family: 'Bree';
+  border: 2px solid #d3d3d3;
+}
+.codigo{
 }
 
 .campo{
 	width: 100%;
-	height: auto;
+	height: 10px;
 	display: table; /*faz com que a div circule por todas as divs filhas*/
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid #000000;
   padding: 10px 0 10px 0;
   font-family: 'Bree';
-  font-size: 20px;
+  font-size: 15px;
+}
+
+.combobox{
+  width: 100%;
+  height: 35px;
+  display: table; /*faz com que a div circule por todas as divs filhas*/
+  border-radius: 6px;
+  border: 1px solid #000000;
+  padding: 10px 0 10px 0;
+  font-family: 'Bree';
+  font-size: 13px;
 }
 
 .resultado{
-  width: 100%;
+  width: 95%;
   height: auto;
   display: table; /*faz com que a div circule por todas as divs filhas*/
   border-radius: 8px;
@@ -122,39 +152,51 @@ a:link
   /*padding: 10px 0 10px 0;*/
   font-family: 'Bree';
   font-size: 20px;
+  padding: 2px 10px 2px 10px;
 }
 
 .nome_evento{
-	width: 60%;
-	text-align: left;
-	float: left;
+	/*width: 60%;*/
+  width: 100%;
+	/*text-align: center;*/
+	/*float: center;*/
   font-family: 'Bree';
+  color: #FFA500;
+  font-size: 120%;
 }
 
 .data_evento{
-	/*width: 20%;*/
-	text-align: right;
-	margin-left: 70%;
+	width: 40%;
+	text-align: left;
+	/*margin-left: 70%;*/
   font-family: 'Bree';
+  color: #FFA500;
+  float: left;
+  font-size: 80%;
 }
 
 .hora_evento{
-	width: auto;
+	/*width: auto;*/
+  width: 60%;
+  margin-left: 40%;
 	text-align: left;
-	float: left;
-	color: #FFA500;
-	font-style: italic;
-  font-size: 80%;
+	/*float: left;*/
+	/*color: #FFA500;*/
+  color: #808080;
+	/*font-style: italic;*/
+  /*font-size: 80%;*/
   font-family: 'Bree';
+  font-size: 80%;
 }
 
 .local_evento{
 	width: auto;
 	text-align: left;
 	float: left;
-	color: #FFA500;
-	font-style: italic;
-  font-size: 80%;
+	/*color: #FFA500;*/
+  color: #808080;
+	/*font-style: italic;*/
+  font-size: 60%;
   font-family: 'Bree';
 }
 
@@ -162,9 +204,10 @@ a:link
 	width: auto;
 	text-align: left;
 	float: left;
-	color: #FFA500;
-	font-style: italic;
-  font-size: 80%;
+	/*color: #FFA500;*/
+  color: #d3d3d3;
+	/*font-style: italic;*/
+  font-size: 60%;
   font-family: 'Bree';
 }
 
@@ -172,18 +215,21 @@ a:link
 	width: 100%;
 	text-align: left;
 	float: none;
-	color: #FFA500;
-	font-style: italic;
-  font-size: 80%;
+	/*color: #FFA500;*/
+  color: #d3d3d3;
+	/*font-style: italic;*/
+  font-size: 60%;
   font-family: 'Bree';
+  /*padding: 2px 2px 2px 2px;*/
 }
 
 .link_evento{
 	width: 100%;
 	text-align: left;
 	float: none;
-	color: #FFA500;
-	font-style: italic;
+	/*color: #FFA500;*/
+  color: #d3d3d3;
+	/*font-style: italic;*/
   font-family: 'Bree';
 }
 
@@ -191,6 +237,7 @@ a:link
 /*style.css*/
 .element {
     width: 50%;
+    height: 100%;
     margin:0.5em auto 0em;
 }
 
@@ -206,6 +253,7 @@ a:link
 .element-block2-left {
     float: center;
     width: 100%;
+    height: 100%;
 }
 
 .signin {
@@ -213,6 +261,16 @@ a:link
     padding: 2em 2em;
     border-radius: 4px;
     box-shadow: 0 -1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);
+}
+
+.quadro{
+  float: center;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  padding: 2em 2em;
+  border-radius: 4px;
+  box-shadow: 0 -1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24); 
 }
 
 @media(max-width:1440px){
@@ -231,6 +289,9 @@ a:link
 }
 }
 @media(max-width:800px){
+/*html, body{
+   font-size: 100%;
+}*/
 .element {
     width: 100%;
 }	
@@ -243,18 +304,35 @@ a:link
 .link_evento{
 	font-size: 0.6em;
 }
+
+.quadro{
+  float: none;
+  width: 100%;
+  margin: 0em auto 2em;
+}
 }
 
 @media(max-width:480px){
+/*html, body{
+   font-size: 100%;
+}*/
 .element-block2-left {
-    float: none;
-    width: 100%;
-     margin: 0em auto 1em;
+  float: none;
+  width: 100%;
+  margin: 0em auto 1em;
+}
+
+.quadro{
+  float: none;
+  width: 100%;
+  margin: 0em auto 1em;
 }
 
 }
 @media(max-width:414px){
-
+/*html, body{
+   font-size: 100%;
+}*/
 .element h1 {
     font-size: 1.5em;
     margin-bottom: 0.5em;
@@ -262,19 +340,29 @@ a:link
 
 }
 @media(max-width:384px){
+/*html, body{
+   font-size: 100%;
+}*/
 .element-block2-left {
-    float: none;
-    width: 100%;
+  float: none;
+  width: 100%;
 }
 .signin {
     padding: 1em 1em;
 }
+.quadro{
+  float: none;
+  width: 100%;
+  padding: 1em 1em;
+}
+
+
 }
 
 @media(max-width:320px){
-html, body{
-   font-size: 70%;
-}
+/*html, body{
+   font-size: 100%;
+}*/
 
 .element {
     margin: 1em auto 0em;
@@ -289,9 +377,9 @@ html, body{
 }
 
 @media(max-width:300px){
-html, body{
-   font-size: 50%;
-}
+/*html, body{
+   font-size: 100%;
+}*/
 
 
 }

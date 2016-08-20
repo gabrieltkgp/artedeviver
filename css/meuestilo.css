@@ -90,19 +90,20 @@ html, body{
 }
 
 .todos_eventos{
-
 }
 
 a:link 
 { 
   text-decoration: none; 
   color: #d3d3d3;
+
 } 
 
 a:visited 
 { 
   text-decoration: none; 
   color: #d3d3d3;
+
 } 
 
 a:hover {
@@ -227,10 +228,12 @@ a:hover {
 	width: 100%;
 	text-align: left;
 	float: none;
-	/*color: #FFA500;*/
-  color: #d3d3d3;
-	/*font-style: italic;*/
+	color: #FFA500;
+  /*color: #d3d3d3;*/
+  /*color: #000000;*/
+	font-weight: bold;
   font-family: 'Bree';
+  font-size: 60%;
 }
 
 
@@ -302,7 +305,7 @@ a:hover {
     margin: 0em auto 2em;
 }
 .link_evento{
-	font-size: 0.6em;
+	/*font-size: 0.6em;*/
 }
 
 .quadro{
@@ -373,7 +376,7 @@ a:hover {
 }
 
 .link_evento{
-	font-size: 0.6em;
+	/*font-size: 0.6em;*/
 }
 
 @media(max-width:300px){

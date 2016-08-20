@@ -96,12 +96,13 @@ class EventosOperacoes{
         	"eve.id, eve.nome, eve.local, eve.endereco, eve.observacao, eve.data, eve.id_cidade, eve.privado, eve.link, cid.id_estado " .
         	"FROM " .
         	"eventos eve " .
-        	"JOIN cidades cid ON cid.id = eve.id_cidade ";
+        	"JOIN cidades cid ON cid.id = eve.id_cidade " .
+        	"WHERE " .
+        	"eve.data >= now() ";
 
     	if(!empty($pnEventoId)){
         	$select = $select .
-        		"WHERE " .
-        		"eve.id = ? ";
+        		" and eve.id = ?";
     	}
 
     	return $select;

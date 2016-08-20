@@ -47,7 +47,7 @@ foreach($eventosArray as $evento){
 
 	 if ($evento->getLink() != ''){
 		echo "<div class='resultado'>";
-			echo "<div class='link_evento'><a href='". $evento->getLink() ."' target='_blanck'> CONFIRA MAIS INFORMAÇÕES >> </a></div>";
+			echo "<div><a href='". $evento->getLink() ."' target='_blanck'><div class='link_evento'>CONFIRA MAIS INFORMAÇÕES >> </div></a></div>";
 		echo "</div>";
 	 }
 	

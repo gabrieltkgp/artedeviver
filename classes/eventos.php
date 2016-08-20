@@ -87,6 +87,11 @@
 			return date("d/m/Y h:i:s", $datahora);
 		}
 
+		public function getDate2(){
+			$datahora = strtotime($this->data);
+			return date("d/m/Y", $datahora);
+		}
+
 		public function getOnlyDate(){
 			setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 			date_default_timezone_set('America/Sao_Paulo');
@@ -97,7 +102,7 @@
 
 		public function getOnlyTime(){
 			$datahora = strtotime($this->data);
-			return date("h", $datahora);
+			return date("H", $datahora);
 		}
 
 		public function setPrivado($privado){

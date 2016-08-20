@@ -38,19 +38,20 @@
         <div class="label">Observacao:</div>
         <input name="evento_observacao" type="text" />
 
-        <div class="label">Estado:</div>
-        <?php 
-            include_once("../classes/components.php");
-            $oType = new Components();
-            echo $oType->createEstadosDropDown();
-        ?>
+        <!-- <div class="label">Estado:</div> -->
+        <!-- <?php 
+            //include_once("../classes/components.php");
+           // $oType = new Components();
+           // echo $oType->createEstadosDropDown();
+        ?> -->
         <br>
         <div class="cidade">
             <div id="label_cidade">Cidade:</div>
             <?php 
                 include_once("../classes/components.php");
                 $oType = new Components();
-                echo $oType->createDropDownEmpty("selection_cidades", "idCidade");
+                //echo $oType->createDropDownEmpty("selection_cidades", "idCidade");
+                echo $oType->createCidadesDropDown();
             ?>
         </div>
         <div class="label">Data:</div>

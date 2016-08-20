@@ -13,7 +13,7 @@ class Components{
 		return "SELECT id, sigla, nome FROM estados ORDER BY nome";
 	}
 	
-	public function createEstadosDropDown(){
+	public function createEstadosDropDown($pnSelecionarId=0){
 		$oConn = $this->oTools->getConn();
 
 		$oStmt = $oConn->prepare($this->queryEstados());	
@@ -30,7 +30,8 @@ class Components{
 		$sDropDown = $sDropDown . "<option value=''></option> ";
 		if($oStmt->num_rows > 0) {
 			while($oStmt->fetch()){
-				$sDropDown = $sDropDown . "<option value=$id>$nome</option> ";
+				$sSelecionar = $id == $pnSelecionarId ? "selected='selected'" : "";
+				$sDropDown = $sDropDown . "<option value=$id $sSelecionar>$nome</option> ";
 			}
 		}
 		$sDropDown = $sDropDown . "</select> ";
@@ -50,7 +51,7 @@ class Components{
 	}
 	
 	// public function createCidadesDropDown($pnIdEstado, $pbExibirEstado=true){
-	public function createCidadesDropDown($pbExibirEstado=true){
+	public function createCidadesDropDown($pnSelecionarId=0, $pbExibirEstado=true){
 		$oConn = $this->oTools->getConn();
 
 		$oStmt = $oConn->prepare($this->queryCidades());
@@ -66,10 +67,12 @@ class Components{
 		$sDropDown = "<select id='selection_cidades' name='idCidade' class='combobox'> ";
 		if($oStmt->num_rows > 0) {
 			while($oStmt->fetch()){
+				$sSelecionar = $id == $pnSelecionarId ? "selected='selected'" : "";
 				if ($pbExibirEstado) {
-					$sDropDown = $sDropDown . "<option value=$id>$sigla/$nome</option> ";
+
+					$sDropDown = $sDropDown . "<option value=$id $sSelecionar>$sigla/$nome</option> ";
 				} else{
-					$sDropDown = $sDropDown . "<option value=$id>$nome</option> ";	
+					$sDropDown = $sDropDown . "<option value=$id $sSelecionar>$nome</option> ";	
 				}
 				
 			}

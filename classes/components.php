@@ -51,7 +51,7 @@ class Components{
 	}
 	
 	// public function createCidadesDropDown($pnIdEstado, $pbExibirEstado=true){
-	public function createCidadesDropDown($pnSelecionarId=0, $pbExibirEstado=true){
+	public function createCidadesDropDown($pnSelecionarId=0, $pbExibirEstado=true, $pnIdUpdate=0){
 		$oConn = $this->oTools->getConn();
 
 		$oStmt = $oConn->prepare($this->queryCidades());
@@ -63,8 +63,11 @@ class Components{
       	$oStmt->bind_result($id, $nome, $idEstado, $sigla);
 
 		//$oResult = $this->oStmt->get_result();
-
-		$sDropDown = "<select id='selection_cidades' name='idCidade' class='combobox'> ";
+      	if ($pnIdUpdate == 0){
+			$sDropDown = "<select id='idCidade' name='idCidade' class='combobox'> ";
+		} else {
+			$sDropDown = "<select id='idCidade_" . $pnIdUpdate . "' name='idCidade_" . $pnIdUpdate . "' class='combobox'> ";
+		}
 		if($oStmt->num_rows > 0) {
 			while($oStmt->fetch()){
 				$sSelecionar = $id == $pnSelecionarId ? "selected='selected'" : "";

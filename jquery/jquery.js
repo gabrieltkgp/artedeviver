@@ -6,7 +6,7 @@ $(document).ready(function() {
             url: "../classes/carregarCidades.php",
             success: function(msg) {
                 if (msg != '') {
-                    $("#selection_cidades").html(msg).show();
+                    $("#idCidade").html(msg).show();
                 }
             }
         });

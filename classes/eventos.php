@@ -78,8 +78,14 @@
 			$this->data = $data;
 		}
 
-		public function getData(){
-			return $this->data;
+		public function getDate(){
+			$datahora = strtotime($this->data);
+			return date("Y-m-d", $datahora);
+		}
+
+		public function getTime(){
+			$datahora = strtotime($this->data);
+			return date("h:i", $datahora);
 		}
 
 		public function getDateFormated(){
@@ -100,9 +106,13 @@
 			//return date("d - M ", $datahora);
 		}
 
-		public function getOnlyTime(){
+		public function getOnlyHour(){
 			$datahora = strtotime($this->data);
 			return date("H", $datahora);
+		}
+		public function getOnlyMinute(){
+			$datahora = strtotime($this->data);
+			return date("i", $datahora);
 		}
 
 		public function setPrivado($privado){

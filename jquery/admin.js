@@ -1,4 +1,4 @@
-function uploadTask(id){
+function updateEvento(id){
     if (!confirm("deseja confirmar?")){
         return;
     }
@@ -10,7 +10,7 @@ function uploadTask(id){
 
     $.ajax({
         type: "POST",
-        url: "../classes/p2-admin-update-task.php",
+        url: "../admin/updateEvento.php",
         data: formData,
         processData: false,
         contentType: false,

@@ -33,7 +33,8 @@ if (isset($_COOKIE['email'])){
 		<div class="signin">	
 			<div class="div_logo"><img src="../images/icone2.png" class="logo"></div>	
 			<div class="titulo">Respira</div>
-			<div class="texto">Aulas gratuitas de <b>Yoga</b> e <b>Meditação</b>, Cursos para desenvolvimento pessoal e eventos da Arte de Viver.</div>
+			<div class="texto">Aulas gratuitas de <b>Yoga</b> e <b>Meditação</b>, 
+								Cursos para desenvolvimento pessoal e eventos da Arte de Viver. </div>
 			<!-- <form action="listarEventos.php" method="post" id="form1" onSubmit="return ( valida_form() )"> -->
 			 <form action="listarEventos.php" method="post" id="form1">
 				<div class="dados_form">
@@ -49,20 +50,19 @@ if (isset($_COOKIE['email'])){
 						// echo $oType->createEstadosDropDown();
 					?>  -->
 	    
-	    			<br>
+	    			<!-- <br> -->
 	    			<div class="cidade">
 				   		<div class="label">CIDADE:</div>
 					    <?php 
 					    	include_once("../classes/components.php");
 					    	include_once("../classes/constants.php");
 					    	$oType = new Components();
-					    	// echo $oType->createDropDownEmpty("selection_cidades", "idCidade");
 					    	// echo $oType->createCidadesDropDown(SANTA_CATARINA);
 					    	echo $oType->createCidadesDropDown();
 					    ?>
 				    </div>
 				    
-				    <br>
+				    <!-- <br> -->
 				    <div class="botao">
 				    	<button id="pesquisar" class="btn" type="submit" form="form1" value="Submit">Pesquisar</button>
 				    </div>

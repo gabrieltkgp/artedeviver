@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
-<!-- <?php
-// include_once("classes/tools.php");
-// $oTools = new Tools();
-// $oTools->isUserLogged();
-?> -->
+ <?php
+ include_once("../classes/tools.php");
+ $oTools = new Tools();
+ $oTools->isUserLogged();
+?> 
 
 
 <html>
@@ -50,7 +50,6 @@
             <?php 
                 include_once("../classes/components.php");
                 $oType = new Components();
-                //echo $oType->createDropDownEmpty("selection_cidades", "idCidade");
                 echo $oType->createCidadesDropDown();
             ?>
         </div>

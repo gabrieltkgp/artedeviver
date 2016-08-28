@@ -40,7 +40,7 @@ function validate(){
         $_SESSION['id'] = $result['id'];
         $_SESSION['login'] = $result['login'];
       
-        header("Location: ../admin.php");
+        header("Location: index.php");
 
         exit;
     }

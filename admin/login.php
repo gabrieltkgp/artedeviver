@@ -7,7 +7,7 @@
 <body>
     <div class="">LOGIN</div>
         <div>
-            <form id="form_login" action="classes/validation.php" method="post">
+            <form id="form_login" action="validation.php" method="post">
                 <div style="width:100px;float:left;"> Login: </div>
                 <input style="width:200px;" name="login" id="login" type="text" maxlength="25" /> <br />
                     

@@ -20,7 +20,7 @@ function createFormEventos(){
 
 		$return = '<form name="form_' . $evento->getId() . '" id="form_' . $evento->getId() . '" action="" method="post">';
 		$return .= '	<div style="width:100px;float:left;"> Id: </div> ';
-		$return .= '	<input style="width:600px;" name="evento_id' . $evento->getId() . '" id="evento_id' . $evento->getId() . '" value="' . $evento->getId() . '" type=text disabled/> <br />';
+		$return .= '	<input style="width:600px;" name="evento_id_' . $evento->getId() . '" id="evento_id_' . $evento->getId() . '" value="' . $evento->getId() . '" type=text disabled/> <br />';
 		$return .= '	<div style="width:100px;float:left;"> Nome: </div>';
 		$return .= '	<input style="width:600px;" name="evento_nome_' . $evento->getId() . '" id="evento_nome_' . $evento->getId() . '" value="' . $evento->getNome() . '" type=text/> <br />';
 		$return .= '	<div style="width:100px;float:left;"> Local: </div>';
@@ -34,21 +34,20 @@ function createFormEventos(){
         //$return .= $oType->createEstadosDropDown($evento->getIdEstado());
 		$return .= '	<div style="width:100px;float:left;"> Cidade: </div>';
         $oType = new Components();
-        //$return .= $oType->createDropDownEmpty("selection_cidades", "idCidade");
-        $return .= $oType->createCidadesDropDown($evento->getIdCidade());
+        $return .= $oType->createCidadesDropDown($evento->getIdCidade(), true, $evento->getId());
 
 		$return .= '	<br>';
 		$return .= '	<div style="width:100px;float:left;"> Data: </div>';
-        $return .= '	<input name="evento_data" type="date" value=""/>';
-        $return .= '	<input name="evento_hora" type="time" value=""/>';
+        $return .= '	<input name="evento_data_' . $evento->getId() . '" id="evento_data_' . $evento->getId() . '" type="date" value="' . $evento->getDate() . '"/>';
+        $return .= '	<input name="evento_hora_' . $evento->getId() . '" id="evento_hora_' . $evento->getId() . '" type="time" value="' . $evento->getTime() . '"/>';
         $return .= '	<br>';
 		$return .= '	<div style="width:100px;float:left;"> Privado: </div>';
-		$return .= '	<input type="radio" name="evento_privado' . $evento->getId() . '" value="1" '. ($evento->getPrivado() == 1 ? "checked" : "") .'> Sim ';
-        $return .= '	<input type="radio" name="evento_privado' . $evento->getId() . '" value="0" '. ($evento->getPrivado() == 0 ? "checked" : "") .'> Não';
+		$return .= '	<input type="radio" name="evento_privado_' . $evento->getId() . '" id="evento_privado_' . $evento->getId() . '" value="1" '. ($evento->getPrivado() == 1 ? "checked" : "") .'> Sim ';
+        $return .= '	<input type="radio" name="evento_privado_' . $evento->getId() . '" id="evento_privado_' . $evento->getId() . '" value="0" '. ($evento->getPrivado() == 0 ? "checked" : "") .'> Não';
 		$return .= '	<br>';
 		$return .= '	<div style="width:100px;float:left;"> Link: </div>';
 		$return .= '	<input style="width:600px;" name="evento_link_' . $evento->getId() . '" id="evento_link_' . $evento->getId() . '" value="' . $evento->getLink() . '" type=text size=80/> <br />';
-		$return .= '	<input name="evento_update_' . $evento->getId() . '" id="evento_update_' . $evento->getId() . '" value="SALVAR ALTERAÇÕES" onclick="uploadTask(' . $evento->getId() . ')" type="button" />';
+		$return .= '	<input name="evento_update_' . $evento->getId() . '" id="evento_update_' . $evento->getId() . '" value="SALVAR ALTERAÇÕES" onclick="updateEvento(' . $evento->getId() . ')" type="button" />';
 		$return .= '	<input name="evento_delete_' . $evento->getId() . '" id="evento_delete_' . $evento->getId() . '" value="APAGAR REGISTRO" onclick="deleteTask(' . $evento->getId() . ')" type="button" />';
 		$return .= '	<br><br>';
 		$return .= '</form>';

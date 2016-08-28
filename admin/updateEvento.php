@@ -17,10 +17,10 @@ $oEventosOperacoes = new eventosOperacoes();
 $bSuccess = $oEventosOperacoes->executeUpdate($evento_id, $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link); 
   
 if($bSuccess){
-	$return = "Novo evento inserido com sucesso!";
+	$return = "Evento alterado com sucesso!";
 }
 else{
-	$return = "Erro ao inserir novo evento.";
+	$return = "Erro ao alterar evento.";
 }
 
 ?>

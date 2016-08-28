@@ -28,7 +28,7 @@ foreach($eventosArray as $evento){
 	echo "<div class='resultado'>";
 	echo 	"<div class='data_evento'>". strtoupper ($evento->getOnlyDate()) ."</div>";
 	// echo 	"<div class='hora_evento'> | ". $evento->getOnlyTime() ."h </div>";
-	echo 	"<div class='hora_evento'> | ". strtoupper ($evento->getOnlyTime()) ."h &nbsp;-&nbsp;". strtoupper ($evento->getLocal()) ."</div>";
+	echo 	"<div class='hora_evento'> | ". strtoupper ($evento->getOnlyHour()) ."h". strtoupper ($evento->getOnlyMinute()) . "&nbsp;-&nbsp;". strtoupper ($evento->getLocal()) ."</div>";
 	echo "</div>";
 	echo "<div class='resultado'>";
 	// echo 	"<div class='local_evento'> &nbsp;-&nbsp;". $evento->getLocal() ." </div>";

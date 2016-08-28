@@ -157,30 +157,37 @@ class EventosOperacoes{
 	// END QUERY
 
 	// BEGIN UPDATE
-	private function updateTaskRegister($pnTaskId, $psTaskName, $psTaskDescription, $pnTypeId, $pnTaskActive){
+	private function updateEvento($evento_id, $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link){
+
 		$sSqlUpdateTask = "UPDATE " .
-			"wd_tasks " .
+			"eventos " .
 			"SET " .
-			"task_name = ?, " .
-			"task_description = ?, " .
-			"type_id = ?, " .
-			"task_active = ? ".
+			"nome = ?, ".
+			"local = ?, ". 
+			"endereco = ?, ".
+			"observacao = ?, ". 
+			"data = ?, ".
+			"id_cidade = ?, ". 
+			"privado = ?, ". 
+			"link = ? ".
 			"WHERE " .
-			"task_id = ?";
+			"id = ?";
+
+		$datahora = $evento_data . " " . $evento_hora . ":00";
 
 		$stmt = $this->oConn->prepare($sSqlUpdateTask);
-		$stmt->bind_param('ssiii',  $psTaskName, $psTaskDescription, $pnTypeId, $pnTaskActive, $pnTaskId);
+		$stmt->bind_param('sssssiisi',  $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $datahora, $id_cidade, $evento_privado, $evento_link, $evento_id);
 
 	    return $stmt->execute();
 	}
 
-	public function executeUpdate($pnTaskId, $psTaskName, $psTaskDescription, $pnTypeId, $pnTaskActive){
+	public function executeUpdate($evento_id, $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link){
 		
-		if (empty($pnTaskId)){
+		if (empty($evento_id)){
 			return false;
 		}
 
-		return $this->updateTaskRegister($pnTaskId, $psTaskName, $psTaskDescription, $pnTypeId, $pnTaskActive);
+		return $this->updateEvento($evento_id, $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link);
 	}
 	// END UPDATE
 }

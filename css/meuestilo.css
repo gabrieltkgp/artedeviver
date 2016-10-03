@@ -38,7 +38,7 @@ html, body{
 .texto{
   padding: 5px 0 5px 0;
   /*text-align: center;*/
-  text-align: justify;
+  text-align: center;
   font-family: 'Bree'; 
   font-size: 120%; 
   color: #9f9f9f;

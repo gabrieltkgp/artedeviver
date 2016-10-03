@@ -4,7 +4,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: 13/09/2016 às 02:57:32
+-- Tempo de Geração: 13/09/2016 às 02:56:59
 -- Versão do Servidor: 10.0.20-MariaDB
 -- Versão do PHP: 5.2.17
 
@@ -20,74 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de Dados: `u210765844_1`
 --
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `cidades`
---
-
-CREATE TABLE IF NOT EXISTS `cidades` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(255) NOT NULL,
-  `id_estado` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
-
---
--- Extraindo dados da tabela `cidades`
---
-
-INSERT INTO `cidades` (`id`, `nome`, `id_estado`) VALUES
-(1, 'Florianópolis', 24),
-(2, 'Balneário Camboriu', 24),
-(3, 'Blumenau', 24);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `estados`
---
-
-CREATE TABLE IF NOT EXISTS `estados` (
-  `id` int(2) NOT NULL AUTO_INCREMENT,
-  `sigla` varchar(2) NOT NULL,
-  `nome` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
-
---
--- Extraindo dados da tabela `estados`
---
-
-INSERT INTO `estados` (`id`, `sigla`, `nome`) VALUES
-(2, 'AL', 'Alagoas'),
-(1, 'AC', 'Acre'),
-(3, 'AM', 'Amazonas'),
-(4, 'AP', 'Amapá'),
-(5, 'BA', 'Bahia'),
-(6, 'CE', 'Ceará'),
-(7, 'DF', 'Distrito Federal'),
-(8, 'ES', 'Espírito Santo'),
-(9, 'GO', 'Goiás'),
-(10, 'MA', 'Maranhão'),
-(11, 'MG', 'Minas Gerais'),
-(12, 'MS', 'Mato Grosso do Sul'),
-(13, 'MT', 'Mato Grosso'),
-(14, 'PA', 'Pará'),
-(15, 'PB', 'Paraíba'),
-(16, 'PE', 'Pernambuco'),
-(17, 'PI', 'Piauí'),
-(18, 'PR', 'Paraná'),
-(19, 'RJ', 'Rio de Janeiro'),
-(20, 'RN', 'Rio Grande do Norte'),
-(21, 'RO', 'Rondônia'),
-(22, 'RR', 'Roraima'),
-(23, 'RS', 'Rio Grande do Sul'),
-(24, 'SC', 'Santa Catarina'),
-(25, 'SE', 'Sergipe'),
-(26, 'SP', 'São Paulo'),
-(27, 'TO', 'Tocantins');
 
 -- --------------------------------------------------------
 
@@ -238,45 +170,6 @@ INSERT INTO `eventos` (`id`, `nome`, `local`, `endereco`, `observacao`, `data`, 
 (220, 'Satsang de Final de Ano', 'Local a definir', '', '', '2016-12-03 20:00:00', 2, 0, '', NULL),
 (221, 'Meditação com Trilha', 'Local e horário a definir', '', '', '2017-01-14 00:00:00', 2, 0, '', NULL),
 (222, 'Meditação com Trilha e SUP', 'Local e horário a definir', '', '', '2017-02-11 00:00:00', 2, 0, '', NULL);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `lista_emails`
---
-
-CREATE TABLE IF NOT EXISTS `lista_emails` (
-  `email` varchar(255) NOT NULL,
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=46 ;
-
---
--- Extraindo dados da tabela `lista_emails`
---
-
-INSERT INTO `lista_emails` (`email`, `id`) VALUES
-('jaigurudev', 1);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `usuarios`
---
-
-CREATE TABLE IF NOT EXISTS `usuarios` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
-  `login` varchar(30) NOT NULL,
-  `senha` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
-
---
--- Extraindo dados da tabela `usuarios`
---
-
-INSERT INTO `usuarios` (`id`, `login`, `senha`) VALUES
-(2, 'artedeviver', '22666db15e24f78d92613e713610a58034a52204');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -131,10 +131,44 @@ class EventosOperacoes{
 		if(!empty($pnEventoId)){
     		$oStmt->bind_param('i', $pnEventoId);
     	}
-		
-		$oStmt->execute();
 
-		return $oStmt->get_result(); 
+    	//TEM QUE AJUSTAR AQUI PORQUE EU SÓ COLEI OS CODIGOS DE OUTRA CLASSE.
+		
+		$oStmt->store_result();
+
+        $oStmt->bind_result($id, $nome, $local, $endereco, $observacao, $link, $data, $privado, $id_cidade, $nome_cidade, $id_estado, $nome_estado, 
+          $map);
+
+      if ($oStmt->num_rows > 0){
+        $i = 1;
+        while ($oStmt->fetch()) {
+          $eventosArray[$i] = new Eventos();
+
+          $eventosArray[$i]->setId($id);
+          $eventosArray[$i]->setNome($nome);   
+          $eventosArray[$i]->setLocal($local);   
+          $eventosArray[$i]->setEndereco($endereco);
+          $eventosArray[$i]->setObservacao($observacao);
+          $eventosArray[$i]->setLink($link);
+          $eventosArray[$i]->setData($data);
+          $eventosArray[$i]->setPrivado($privado);
+          $eventosArray[$i]->setIdCidade($id_cidade);
+          $eventosArray[$i]->setNomeCidade($nome_cidade);
+          $eventosArray[$i]->setIdEstado($id_estado);
+          $eventosArray[$i]->setNomeEstado($nome_estado);
+          $eventosArray[$i]->setMap($map);
+
+          $i = $i + 1;
+        }  
+      }
+
+      $oStmt->free_result();
+
+      $oStmt->close();
+
+      $oConn->close();
+
+      return $eventosArray;
     }
 
     public function executeQuery($pnEventoId){

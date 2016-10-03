@@ -45,11 +45,17 @@ foreach($eventosArray as $evento){
 		echo "</div>";
 	 }
 
-	 if ($evento->getLink() != ''){
+	if ($evento->getLink() != ''){
 		echo "<div class='resultado'>";
 			echo "<div><a href='". $evento->getLink() ."' target='_blanck'><div class='link_evento'>CONFIRA MAIS INFORMAÇÕES >> </div></a></div>";
 		echo "</div>";
-	 }
+	}
+
+	if ($evento->getMap() != ''){
+		echo "<div class='resultado'>";
+			echo "<div><a href='". $evento->getMap() ."' target='_blanck'><div class='link_evento'>VER MAPA >> </div></a></div>";
+		echo "</div>";
+	}
 	
 	// $sHtmlEvento = $sHtmlEvento . "<div class='resultado'>Cidade: ". $evento->getNomeCidade() ."</div>";
 	// $sHtmlEvento = $sHtmlEvento . "<div class='resultado'>Estado: ". $evento->getNomeEstado() ."</div>";
@@ -60,3 +66,5 @@ foreach($eventosArray as $evento){
 	$i++;
 }
 ?>
+
+

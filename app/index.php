@@ -6,6 +6,8 @@
 if (isset($_COOKIE['email'])){
 	header("Location: listarEventos.php");
 }
+setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+date_default_timezone_set('America/Sao_Paulo');
 ?>
 
 <!DOCTYPE HTML>
@@ -39,7 +41,7 @@ if (isset($_COOKIE['email'])){
 			 <form action="listarEventos.php" method="post" id="form1">
 				<div class="dados_form">
 					<div class="codigo">
-						<div class="label">CÓDIGO DE ACESSO:</div>
+						<div class="label">CÓDIGO DE ACESSO (OPCIONAL):</div>
 						<input id="email" name="email" type="text" class="campo"/>
 					</div>
 		

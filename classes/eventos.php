@@ -13,6 +13,7 @@
 		private $nomeCidade;
 		private $idEstado;
 		private $nomeEstado;
+		private $map;
 
 		public function setId($id){
 			$this->id = $id;
@@ -153,6 +154,18 @@
 
 		public function getNomeEstado(){
 			return $this->nomeEstado;
+		}
+
+		public function setMap($map){
+			if ($map == null){
+				$this->map = '';
+			}else{
+				$this->map = $map;	
+			}
+		}
+
+		public function getMap(){
+			return $this->map;
 		}
 	}
 ?>

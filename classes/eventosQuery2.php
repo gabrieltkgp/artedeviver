@@ -6,14 +6,14 @@
 
     private function getSelectEventos($pbEmailValido){
       $sSql = "SELECT ".
-      "e.id, e.nome, e.local, e.endereco, e.observacao, e.link, e.data, e.privado, e.id_cidade, c.nome as nome_cidade, est.id as id_estado, est.nome as nome_estado ".
+      "e.id, e.nome, e.local, e.endereco, e.observacao, e.link, e.data, e.privado, e.id_cidade, c.nome as nome_cidade, est.id as id_estado, est.nome as nome_estado, e.map ".
       "FROM ".
       "eventos e ".
       "join cidades c on c.id = e.id_cidade ".
       "join estados est on est.id = c.id_estado ".
       "WHERE ".
       "e.id_cidade = ? and ".
-      "e.data >= now()";
+      "e.data >= now() - INTERVAL 1 DAY";
 
       if(!$pbEmailValido){
         $sSql = $sSql . " AND e.privado = 0"; 
@@ -25,7 +25,7 @@
     }
 
     private function getSelectEmail(){
-      return "SELECT e.email FROM lista_emails e WHERE e.email = ? ";
+      return "SELECT e.id, e.email FROM lista_emails e WHERE e.email = ? ";
     }
 
     private function getSelectNomeCidade(){
@@ -83,7 +83,13 @@
 
         $oStmt->store_result();
 
-        $bEmailValido = $oStmt->num_rows > 0;
+        $oStmt->bind_result($nId, $sEmail);
+
+        $oStmt->fetch();
+
+        //$bEmailValido = $oStmt->num_rows > 0;
+
+        //$bEmailValido = ();
 
         $oStmt->free_result();
 
@@ -95,7 +101,7 @@
         echo 'Caught exception: '.  $e->getMessage(). "\n";
       }
 
-      return $bEmailValido;
+      return $psEmail == $sEmail;
     }
 
     private function createArrayEventos($pbEmailValido, $pnIdCidade){
@@ -115,7 +121,8 @@
 
       $oStmt->store_result();
 
-      $oStmt->bind_result($id, $nome, $local, $endereco, $observacao, $link, $data, $privado, $id_cidade, $nome_cidade, $id_estado, $nome_estado);
+      $oStmt->bind_result($id, $nome, $local, $endereco, $observacao, $link, $data, $privado, $id_cidade, $nome_cidade, $id_estado, $nome_estado, 
+        $map);
 
       if ($oStmt->num_rows > 0){
         $i = 1;
@@ -134,6 +141,7 @@
           $eventosArray[$i]->setNomeCidade($nome_cidade);
           $eventosArray[$i]->setIdEstado($id_estado);
           $eventosArray[$i]->setNomeEstado($nome_estado);
+          $eventosArray[$i]->setMap($map);
 
           $i = $i + 1;
         }  
@@ -162,6 +170,7 @@
       $eventosArray[$i]->setNomeCidade($row['nome_cidade']);
       $eventosArray[$i]->setIdEstado($row['id_estado']);
       $eventosArray[$i]->setNomeEstado($row['nome_estado']);
+      $eventosArray[$i]->setMap($row['map']);
     }
 
     // private function testarEmailECidadeValidos($psEmail, $pnIdCidade){

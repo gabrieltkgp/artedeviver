@@ -15,60 +15,79 @@
 <script src="../jquery/admin.js"></script>
 
     <title>Arte de viver</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="../css/meuestilo.css" rel="stylesheet" type="text/css" media="all"/>
 </head>
 <body>
-    <div class="p2-main-content-title">ADMIN</div>
-    <div id="readData">
-        <div id="label_id">Evento Id:</div>
-        <input name="id" id="id" type="text" />
-        <input value="Load" onclick="getById();" type="button" />
-    </div>
-    <hr />
-    <h2>Inserir novo evento:</h2>
-    <form action="admin.php">
-        <div class="label">Nome:</div>
-        <input name="evento_nome" type="text" />
+<div class="element">
+<div class="trocar_email"><a href='../app/trocarEmail.php'>X</a></div>
+    <div class="element-block2-left">
+        <div class="signin">
+            <div id="readData">
+                <b>PESQUISAR EVENTOS:</b>
+                <div class="label" id="label_id">ID:</div>
+                <input class="campo" name="id" id="id" type="text" />
+                <div class="cidade">
+                    <div class="label" id="label_cidade">CIDADE:</div>
+                    <?php 
+                        include_once("../classes/components.php");
+                        $oType = new Components();
+                        echo $oType->createCidadesDropDown();
+                    ?>
+                </div>
+                <input class="btn" value="Pesquisar" onclick="getById();" type="button" />
+            </div>
+            <hr/>
+            <b>INSERIR NOVO EVENTO:</b>
+            <form action="admin.php">
+                <div class="label">NOME:</div>
+                <input class="campo" name="evento_nome" type="text" />
 
-        <div class="label">Local:</div>
-        <input name="evento_local" type="text" />
+                <div class="label">LOCAL:</div>
+                <input class="campo" name="evento_local" type="text" />
 
-        <div class="label">Endereco:</div>
-        <input name="evento_endereco" type="text" />
+                <div class="label">ENDEREÇO:</div>
+                <input class="campo" name="evento_endereco" type="text" />
 
-        <div class="label">Observacao:</div>
-        <input name="evento_observacao" type="text" />
+                <div class="label">OBSERVAÇÃO:</div>
+                <input class="campo" name="evento_observacao" type="text" />
 
-        <!-- <div class="label">Estado:</div> -->
-        <!-- <?php 
-            //include_once("../classes/components.php");
-           // $oType = new Components();
-           // echo $oType->createEstadosDropDown();
-        ?> -->
-        <br>
-        <div class="cidade">
-            <div id="label_cidade">Cidade:</div>
-            <?php 
-                include_once("../classes/components.php");
-                $oType = new Components();
-                echo $oType->createCidadesDropDown();
-            ?>
+                <!-- <div class="label">Estado:</div> -->
+                <!-- <?php 
+                    //include_once("../classes/components.php");
+                   // $oType = new Components();
+                   // echo $oType->createEstadosDropDown();
+                ?> -->
+                <br>
+                <div class="cidade">
+                    <div class="label" id="label_cidade">CIDADE:</div>
+                    <?php 
+                        include_once("../classes/components.php");
+                        $oType = new Components();
+                        echo $oType->createCidadesDropDown();
+                    ?>
+                </div>
+                <div class="label">DATA:</div>
+                <input class="campo" name="evento_data" type="date" />
+                <input class="campo" name="evento_hora" type="time" />
+
+                <div class="label">ABRANGÊNCIA:</div>
+                <input type="radio" name="evento_privado" value="1" > Publico
+                <input type="radio" name="evento_privado" value="2" checked> Privado
+                
+                <div class="label">LINK:</div>
+                <input class="campo" name="evento_link" type="text" />
+
+                <div class="label">GOOGLE MAPS:</div>
+                <input class="campo" name="evento_map" type="text" />
+                <br>
+                <input class="btn" value="Inserir evento" onclick="insertData();" type="button" /><br/>
+            </form>
+            <hr />
+            <b>RESULTADO: </b>
+            <div id="resultdiv"></div>
         </div>
-        <div class="label">Data:</div>
-        <input name="evento_data" type="date" />
-        <input name="evento_hora" type="time" />
-
-        <div class="label">Abrangencia:</div>
-        <input type="radio" name="evento_privado" value="1" > Publico
-        <input type="radio" name="evento_privado" value="2" checked> Privado
-        
-        <div class="label">Link:</div>
-        <input name="evento_link" type="text" />
-        
-        <br>
-        <input value="Inserir evento" onclick="insertData();" type="button" /><br/>
-    </form>
-    <hr />
-    <h2>Registros:</h2>
-    <div id="resultdiv"></div>
+    </div>
+</div>
 </body>
 </html>

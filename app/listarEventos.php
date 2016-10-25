@@ -3,24 +3,30 @@
 // header("Cache-Control: post-check=0, pre-check=0", false);
 // header("Pragma: no-cache");
 
-if (isset($_COOKIE['email']) and (!isset($_POST['email']))){
-	$_POST['email'] = $_COOKIE['email'];
-}
-
-if (isset($_COOKIE['idCidade']) and (!isset($_POST['idCidade']))){
-	$_POST['idCidade'] = $_COOKIE['idCidade'];
-}
-
 if (isset($_POST['email'])){
-	setcookie('email', $_POST['email'], (time()+3600*24*365));
-	// setcookie('email', $_POST['email']);
+	if (strtoupper($_POST['email']) == 'ADMINJGD'){
+		header("Location: ../admin/login.php");
+	}
 }
+else{
+	if (isset($_COOKIE['email']) and (!isset($_POST['email']))){
+		$_POST['email'] = $_COOKIE['email'];
+	}
 
-if (isset($_POST['idCidade'])){
-	setcookie('idCidade', $_POST['idCidade'], (time()+3600*24*365));
-	// setcookie('idCidade', $_POST['idCidade']);
+	if (isset($_COOKIE['idCidade']) and (!isset($_POST['idCidade']))){
+		$_POST['idCidade'] = $_COOKIE['idCidade'];
+	}
+
+	if (isset($_POST['email'])){
+		setcookie('email', $_POST['email'], (time()+3600*24*365));
+		// setcookie('email', $_POST['email']);
+	}
+
+	if (isset($_POST['idCidade'])){
+		setcookie('idCidade', $_POST['idCidade'], (time()+3600*24*365));
+		// setcookie('idCidade', $_POST['idCidade']);
+	}
 }
-
 ?>
 
 <!DOCTYPE HTML>

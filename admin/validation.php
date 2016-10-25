@@ -6,7 +6,7 @@ validate();
     
 function validate(){ 
     if (!empty($_POST) AND (empty($_POST['login']) OR empty($_POST['password']))) {
-        header("Location: ../login.php"); 
+        header("Location: login.php"); 
         exit;
     }
 
@@ -15,7 +15,7 @@ function validate(){
 
     if (!TestarLoginPasswordValidos($sLogin, $sPassword)){ 
         
-        echo"<script language='javascript' type='text/javascript'>alert('Login invalido!');window.location.href='../login.php'</script>";
+        echo"<script language='javascript' type='text/javascript'>alert('Login invalido!');window.location.href='../admin/login.php'</script>";
          
         exit;
     } else {   
@@ -23,6 +23,8 @@ function validate(){
       
         // $_SESSION['id'] = $result['id'];
         $_SESSION['login'] = $sLogin;
+        $_SERVER['PHP_AUTH_USER'] = $sLogin;
+        $_SERVER['PHP_AUTH_PW'] = sha1($sPassword);
       
         header("Location: index.php");
 

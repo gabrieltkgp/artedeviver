@@ -1,3 +1,4 @@
+
 function updateEvento(id){
     if (!confirm("deseja confirmar?")){
         return;
@@ -16,10 +17,10 @@ function updateEvento(id){
         contentType: false,
         
         success: function(data) {
-            alert("success");
+            alert("Evento alterado com sucesso.");
         },
         error: function(e) {
-            alert("error");
+            alert("Erro!");
         }
     });
 }
@@ -47,9 +48,11 @@ function generateXMLHttp() {
 
 function getById() {
     var id = document.getElementById("id").value;
+    var idCidade = document.getElementById("idCidade").value;
+
     var result = document.getElementById("resultdiv");
     var XMLHttp = generateXMLHttp();
-    XMLHttp.open("get", "../admin/getDataAdmin.php?id=" + id, true);
+    XMLHttp.open("get", "../admin/getDataAdmin.php?id=" + id + "&idCidade=" + idCidade, true);
     XMLHttp.onreadystatechange = function() {
         if (XMLHttp.readyState == 4)
             if (XMLHttp.status == 200) {
@@ -95,4 +98,30 @@ function insertData() {
             result.innerHTML = "Error: " + XMLHttp.statusText;
     };
     XMLHttp.send(fieldsValues);
+}
+
+function deleteEvento(id){
+    if (!confirm("deseja confirmar?")){
+        return;
+    }
+    
+    //var form = document.getElementById(id);
+    var form = $('#form_' + id)[0];
+    var formData = new FormData(form);
+    formData.append("evento_id", id);
+
+    $.ajax({
+        type: "POST",
+        url: "../admin/deleteEvento.php",
+        data: formData,
+        processData: false,
+        contentType: false,
+        
+        success: function(data) {
+            alert("Evento excluído com sucesso.");
+        },
+        error: function(e) {
+            alert("Erro!");
+        }
+    });
 }

@@ -25,7 +25,7 @@ class Tools{
       
 	    if (!isset($_SESSION['login'])) {
 	        session_destroy();
-	        header("Location: login.php"); 
+	        header("Location: ../admin/login.php"); 
 	    } 
 	}
 }

@@ -5,9 +5,12 @@ include_once("../classes/components.php");
 createFormEventos();
 
 function createFormEventos(){ 
+	echo 'admin';
 	$id = $_GET['id'];
+	$idCidade = $_GET['idCidade'];
 	$oEventoOperacoes = new EventosOperacoes();
-	$aEventosArray = $oEventoOperacoes->executeQuery($id);
+	//$aEventosArray = $oEventoOperacoes->executeQuery($id);
+	$aEventosArray = $oEventoOperacoes->queryEventos($id, $idCidade);
 
 	if (empty($aEventosArray)) {
 		echo "Id not found: " . $id;
@@ -47,8 +50,11 @@ function createFormEventos(){
 		$return .= '	<br>';
 		$return .= '	<div style="width:100px;float:left;"> Link: </div>';
 		$return .= '	<input style="width:600px;" name="evento_link_' . $evento->getId() . '" id="evento_link_' . $evento->getId() . '" value="' . $evento->getLink() . '" type=text size=80/> <br />';
+		$return .= '	<div style="width:100px;float:left;"> Map: </div>';
+		$return .= '	<input style="width:600px;" name="evento_map_' . $evento->getId() . '" id="evento_map_' . $evento->getId() . '" value="' . $evento->getMap() . '" type=text size=80/> <br />';
+		$return .= '	<br>';
 		$return .= '	<input name="evento_update_' . $evento->getId() . '" id="evento_update_' . $evento->getId() . '" value="SALVAR ALTERAÇÕES" onclick="updateEvento(' . $evento->getId() . ')" type="button" />';
-		$return .= '	<input name="evento_delete_' . $evento->getId() . '" id="evento_delete_' . $evento->getId() . '" value="APAGAR REGISTRO" onclick="deleteTask(' . $evento->getId() . ')" type="button" />';
+		$return .= '	<input name="evento_delete_' . $evento->getId() . '" id="evento_delete_' . $evento->getId() . '" value="APAGAR REGISTRO" onclick="deleteEvento(' . $evento->getId() . ')" type="button" />';
 		$return .= '	<br><br>';
 		$return .= '</form>';
 

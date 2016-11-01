@@ -9,6 +9,8 @@ function updateEvento(id){
     var formData = new FormData(form);
     formData.append("evento_id", id);
 
+    var result = document.getElementById("resultdiv");
+
     $.ajax({
         type: "POST",
         url: "../admin/updateEvento.php",
@@ -17,10 +19,12 @@ function updateEvento(id){
         contentType: false,
         
         success: function(data) {
-            alert("Evento alterado com sucesso.");
+            //alert("Evento alterado com sucesso.");
+            result.innerHTML = "Evento alterado com sucesso";
         },
         error: function(e) {
-            alert("Erro!");
+            //alert("Erro!");
+            result.innerHTML = "Erro ao alterar evento";
         }
     });
 }
@@ -109,6 +113,7 @@ function deleteEvento(id){
     var form = $('#form_' + id)[0];
     var formData = new FormData(form);
     formData.append("evento_id", id);
+    var result = document.getElementById("resultdiv");
 
     $.ajax({
         type: "POST",
@@ -118,10 +123,12 @@ function deleteEvento(id){
         contentType: false,
         
         success: function(data) {
-            alert("Evento excluído com sucesso.");
+            //alert("Evento excluído com sucesso.");
+            result.innerHTML = "Evento excluído com sucesso";
         },
         error: function(e) {
-            alert("Erro!");
+            //alert("Erro!");
+            result.innerHTML = "Erro ao excluir evento";
         }
     });
 }

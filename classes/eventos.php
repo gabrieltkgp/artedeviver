@@ -86,12 +86,12 @@
 
 		public function getTime(){
 			$datahora = strtotime($this->data);
-			return date("h:i", $datahora);
+			return date("H:i", $datahora);
 		}
 
 		public function getDateFormated(){
 			$datahora = strtotime($this->data);
-			return date("d/m/Y h:i:s", $datahora);
+			return date("d/m/Y H:i:s", $datahora);
 		}
 
 		public function getDate2(){

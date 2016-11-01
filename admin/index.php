@@ -58,7 +58,6 @@
                    // $oType = new Components();
                    // echo $oType->createEstadosDropDown();
                 ?> -->
-                <br>
                 <div class="cidade">
                     <div class="label" id="label_cidade">CIDADE:</div>
                     <?php 

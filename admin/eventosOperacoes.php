@@ -179,7 +179,6 @@ class EventosOperacoes{
 			$oStmt->close();
 
 			$oConn->close();
-		
 
 		return $eventosArray;
     }
@@ -230,7 +229,7 @@ class EventosOperacoes{
 			$oStmt = $oConn->prepare($sSqlUpdateEvento);
 			$oStmt->bind_param('sssssiissi',  $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $datahora, $id_cidade, $evento_privado, $evento_link, $evento_map, $evento_id);
 
-			$bSucess = $stmt->execute();
+			$bSucess = $oStmt->execute();
 
 		}catch(Exception $e){
 	    	$bSucess = false;
@@ -268,10 +267,10 @@ class EventosOperacoes{
 			$oTools = new Tools();
 			$oConn = $oTools->getConn();
 
-			$stmt = $oConn->prepare($sSqlDeleteEvento);
-			$stmt->bind_param('i', $evento_id);
+			$oStmt = $oConn->prepare($sSqlDeleteEvento);
+			$oStmt->bind_param('i', $evento_id);
 
-		    $bSucess = $stmt->execute();
+		    $bSucess = $oStmt->execute();
 
 	    }catch(Exception $e){
 	    	$bSucess = false;
@@ -284,7 +283,6 @@ class EventosOperacoes{
 
 		$oConn->close();
 		
-
 	    return $bSucess;
 	}
 

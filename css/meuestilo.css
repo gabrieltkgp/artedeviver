@@ -127,6 +127,16 @@ a:hover {
 	font-family: 'Bree';
   border: 2px solid #d3d3d3;
 }
+
+.privado{
+  padding: 10px 0 10px 0;
+  width: 100%;
+  height: auto;
+  display: table; /*faz com que a div circule por todas as divs filhas*/
+  font-family: 'Bree';
+  border: 2px solid #ffb300;
+}
+
 .codigo{
   padding: 0 0 0 0;
 }

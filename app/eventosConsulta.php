@@ -20,7 +20,13 @@ foreach($eventosArray as $evento){
 	// }
 
 	// echo "<div id=div_$i class='evento' style='background-color:$cor'>";
-	echo "<div id=div_$i class='evento'>";
+	if ($evento->getPrivado()){
+		echo "<div id=div_$i class='privado'>";
+	}
+	else{
+		echo "<div id=div_$i class='evento'>";	
+	}
+	
 	echo "<div class='resultado'>";
 	echo 	"<div class='nome_evento'>". $evento->getNome() ."</div>";
 	// echo 	"<div class='data_evento'>". $evento->getOnlyDate() ."</div>";

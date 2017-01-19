@@ -71,8 +71,8 @@
                 <input class="campo" name="evento_hora" type="time" />
 
                 <div class="label">ABRANGÊNCIA:</div>
-                <input type="radio" name="evento_privado" value="1" > Publico
-                <input type="radio" name="evento_privado" value="2" checked> Privado
+                <input type="radio" name="evento_privado" value="0" checked> Publico
+                <input type="radio" name="evento_privado" value="1"> Privado
                 
                 <div class="label">LINK:</div>
                 <input class="campo" name="evento_link" type="text" />

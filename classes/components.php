@@ -52,6 +52,8 @@ class Components{
 	
 	// public function createCidadesDropDown($pnIdEstado, $pbExibirEstado=true){
 	public function createCidadesDropDown($pnSelecionarId=0, $pbExibirEstado=true, $pnIdUpdate=0){
+		$cidade = $this->oTools->getUsersCityName();
+
 		$oConn = $this->oTools->getConn();
 
 		$oStmt = $oConn->prepare($this->queryCidades());
@@ -70,9 +72,15 @@ class Components{
 		}
 		if($oStmt->num_rows > 0) {
 			while($oStmt->fetch()){
-				$sSelecionar = $id == $pnSelecionarId ? "selected='selected'" : "";
-				if ($pbExibirEstado) {
+				if ($pnSelecionarId==0){
+					//echo $nome;
+					$sSelecionar = strtoupper($cidade) == strtoupper($nome) ? "selected='selected'" : "";
+				}
+				else {
+					$sSelecionar = $id == $pnSelecionarId ? "selected='selected'" : "";
+				}
 
+				if ($pbExibirEstado) {
 					$sDropDown = $sDropDown . "<option value=$id $sSelecionar>$sigla/$nome</option> ";
 				} else{
 					$sDropDown = $sDropDown . "<option value=$id $sSelecionar>$nome</option> ";	

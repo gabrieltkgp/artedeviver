@@ -1,6 +1,8 @@
 <?php
+include("../ip-detalhes/class.ipdetails.php");
+
 class Tools{
-	function getConn(){
+	public function getConn(){
 		require('config.php');
 	  	$conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -17,7 +19,7 @@ class Tools{
 		return $conn;
 	}
 
-	function isUserLogged(){
+	public function isUserLogged(){
 		
 		if (!isset($_SESSION)){
         	session_start();
@@ -29,24 +31,22 @@ class Tools{
 	    } 
 	}
 
-	function getClientIp() {
-      $ipaddress = '';
-      if ($_SERVER['HTTP_CLIENT_IP'])
-        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-      else if($_SERVER['HTTP_X_FORWARDED_FOR'])
-        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
-      else if($_SERVER['HTTP_X_FORWARDED'])
-        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
-      else if($_SERVER['HTTP_FORWARDED_FOR'])
-        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
-      else if($_SERVER['HTTP_FORWARDED'])
-        $ipaddress = $_SERVER['HTTP_FORWARDED'];
-      else if($_SERVER['REMOTE_ADDR'])
-        $ipaddress = $_SERVER['REMOTE_ADDR'];
-      else
-        $ipaddress = 'UNKNOWN';
+	public function getUsersCityName(){
 
-     return $ipaddress; 
+		$ipdetails = new ipdetails(); 
+    	$ipdetails->scan();
+
+    	if($ipdetails->get_pluginstatus() == 200) {
+    		$cityName = utf8_encode($ipdetails->get_city());
+    	}
+    	else
+    	{
+    		$cityName = "indefinido";
+    	}
+    	
+    	//echo $cityName;
+
+    	return $cityName;
 	}
 }
 ?> 

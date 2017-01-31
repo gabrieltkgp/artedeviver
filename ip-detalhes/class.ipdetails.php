@@ -9,12 +9,27 @@
 *    @license http://creativecommons.org/licenses/by-nc-sa/3.0/ Released under a Creative Commons License
 *    @modify taylorlpes.com, 06 Nov 2011
 */ 
-
+define('geoplugin_status', 'geoplugin_status');
+define('geoplugin_countryCode', 'geoplugin_countryCode');
+define('geoplugin_countryName', 'geoplugin_countryName');
+define('geoplugin_region', 'geoplugin_region');
+define('geoplugin_city', 'geoplugin_city'); 
+define('PostalCode', 'PostalCode');
+define('geoplugin_latitude', 'geoplugin_latitude');
+define('geoplugin_longitude', 'geoplugin_longitude');
+define('geoplugin_dmaCode', 'geoplugin_dmaCode');
+define('geoplugin_areaCode', 'geoplugin_areaCode');
+define('geoplugin_continentCode', 'geoplugin_continentCode');
+define('geoplugin_regionCode', 'geoplugin_regionCode');
+define('geoplugin_regionName', 'geoplugin_regionName');
+define('geoplugin_currencyCode', 'geoplugin_currencyCode');
+define('geoplugin_currencySymbol', 'geoplugin_currencySymbol');
+define('geoplugin_currencyConverter', 'geoplugin_currencyConverter');
 
 class ipdetails
 {
 	var $ip;
-  protected $api = "http://www.geoplugin.net/xml.gp?ip=";
+    protected $api = "http://www.geoplugin.net/xml.gp?ip=";
 	var $details;
 	var $xml;
 	var $curl;
@@ -24,9 +39,11 @@ class ipdetails
     *    @param String $ip IP Address Of which the details are to be located.
     *    @return void
     */ 
-	public function ipdetails($ipaddress)
+	public function ipdetails()
 	{
-		$this->ip=$ipaddress;
+		//$this->ip=$ipaddress;
+		$ip = "189.4.73.232";
+		//$this->ip=$this->getUserIP();
 		$this->curl=curl_init();
 		curl_setopt($this->curl, CURLOPT_URL, $this->api.$this->ip);
 		curl_setopt($this->curl, CURLOPT_CONNECTTIMEOUT, 2);
@@ -84,6 +101,16 @@ class ipdetails
     public function exportxml()
 	{
 		return $this->xml;
+	}
+
+	/** 
+    * Return the Country Code of the given ip address
+    * @access public
+    * @return void
+    */
+	public function get_pluginstatus()
+	{
+		return $this->details[geoplugin_status];
 	}
 	
 	/** 
@@ -261,5 +288,26 @@ class ipdetails
     	curl_close($this->curl);
     	return true;
     }
-	
+
+    private function getUserIP()
+	{
+    	$client  = @$_SERVER['HTTP_CLIENT_IP'];
+    	$forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+   		$remote  = $_SERVER['REMOTE_ADDR'];
+
+    	if(filter_var($client, FILTER_VALIDATE_IP))
+    	{
+    	    $ip = $client;
+   		}
+    	elseif(filter_var($forward, FILTER_VALIDATE_IP))
+    	{
+        	$ip = $forward;
+    	}
+    	else
+    	{
+       		$ip = $remote;
+    	}
+
+    	return $ip;
+	}	
 }

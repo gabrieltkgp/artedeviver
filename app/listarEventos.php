@@ -43,12 +43,15 @@ else{
 <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700' rel='stylesheet' type='text/css'>
 <!--google fonts-->
 <!-- <script src="js/jquery.min.js"></script> -->
+<script src="../jquery/filtro.js"></script>
 </head>
-<body>
+<body onLoad="reduzLogo();">
 <div class="element">
 	<div class="trocar_email"><a href='trocarEmail.php'>X</a></div>
 		<div class="element-block2-left">
 			<div class="signin">
+				<!--div abaixo vira um includo de filtro -->
+                                <div class="div_filtro"><?php include("montaFiltro.php"); ?></div> 
 				<div class="div_logo"><img src="../images/icone2.png" class="logo"></div>
 				<div class="nome_cidade"><?php include("nomeCidade.php"); ?></div>		
 				<div class="todos_eventos"><?php include("eventosConsulta.php"); ?></div>

@@ -1,18 +1,20 @@
 <?php
 	include_once("eventos.php");
   include_once("tools.php");
+  include_once("tipoEvento.php");
 
   class EventosQuery2{
 
     private function getSelectEventos($pbEmailValido){
       $sSql = "SELECT ".
-      "e.id, e.nome, e.local, e.endereco, e.observacao, e.link, e.data, e.privado, e.id_cidade, c.nome as nome_cidade, est.id as id_estado, est.nome as nome_estado, e.map ".
+      "e.id, e.nome, e.local, e.endereco, e.observacao, e.link, e.data, e.privado, e.id_cidade, c.nome as nome_cidade, est.id as id_estado, est.nome as nome_estado, e.map, e.id_tipo_evento ".
       "FROM ".
       "eventos e ".
       "join cidades c on c.id = e.id_cidade ".
       "join estados est on est.id = c.id_estado ".
       "WHERE ".
       "e.id_cidade = ? and ".
+//      "e.data >= now() - INTERVAL 30 DAY";
       "e.data >= now() - INTERVAL 1 DAY";
 
       if(!$pbEmailValido){
@@ -34,6 +36,21 @@
 
     private function getSelectTiposEvento(){
       return "SELECT tp.id, tp.descricao FROM tipo_evento tp ";
+    }
+	
+    private function getSelectFiltro($pbEmailValido){
+      $sSql = "SELECT distinct e.id_tipo_evento, t.descricao 
+		FROM eventos e 
+		JOIN tipo_evento t ON e.id_tipo_evento = t.id
+		WHERE 
+			e.id_cidade = ? and 
+		      	e.data >= now() - INTERVAL 1 DAY";
+
+      if(!$pbEmailValido){
+        $sSql = $sSql . " AND e.privado = 0"; 
+      }
+
+      return $sSql;
     }
 
     public function ConsultarNomeCidade($pnIdCidade){
@@ -126,12 +143,12 @@
       $oStmt->store_result();
 
       $oStmt->bind_result($id, $nome, $local, $endereco, $observacao, $link, $data, $privado, $id_cidade, $nome_cidade, $id_estado, $nome_estado, 
-        $map);
+        $map, $id_tipo_evento);
 
       if ($oStmt->num_rows > 0){
         $i = 1;
         while ($oStmt->fetch()) {
-          $this->setEventosArray($eventosArray, $i, $id, $nome, $local, $endereco, $observacao, $link, $data, $privado, $id_cidade, $nome_cidade, $id_estado, $nome_estado, $map);
+          $this->setEventosArray($eventosArray, $i, $id, $nome, $local, $endereco, $observacao, $link, $data, $privado, $id_cidade, $nome_cidade, $id_estado, $nome_estado, $map, $id_tipo_evento);
           $i = $i + 1;
         }  
       }
@@ -145,7 +162,7 @@
       return $eventosArray;
     }
 
-    private function setEventosArray(&$eventosArray, $i, $id, $nome, $local, $endereco, $observacao, $link, $data, $privado, $id_cidade, $nome_cidade, $id_estado, $nome_estado, $map){
+    private function setEventosArray(&$eventosArray, $i, $id, $nome, $local, $endereco, $observacao, $link, $data, $privado, $id_cidade, $nome_cidade, $id_estado, $nome_estado, $map, $id_tipo_evento){
       $eventosArray[$i] = new Eventos();
 
       $eventosArray[$i]->setId($id);
@@ -161,6 +178,7 @@
       $eventosArray[$i]->setIdEstado($id_estado);
       $eventosArray[$i]->setNomeEstado($nome_estado);
       $eventosArray[$i]->setMap($map);
+      $eventosArray[$i]->setIdTipoEvento($id_tipo_evento);
     }
 
     private function createArrayTiposEvento(){
@@ -200,7 +218,7 @@
     }
 
     private function setTiposEventoArray(&$tiposEventoArray, $i, $id, $descricao){
-      $tiposEventoArray[$i] = new Eventos();
+      $tiposEventoArray[$i] = new TipoEvento();
 
       $tiposEventoArray[$i]->setId($id);
       $tiposEventoArray[$i]->setDescricao($descricao);   
@@ -227,6 +245,49 @@
     //   return (!empty($psEmail) and !empty($pnIdCidade));  
     // }
 
+    private function createArrayFiltro($pbEmailValido, $pnIdCidade){
+
+      $filtroArray = array();
+
+      $oTools = new Tools();
+
+      $oConn = $oTools->getConn();
+
+      $sSql = $this->getSelectFiltro($pbEmailValido);
+      $oStmt = $oConn->prepare($sSql);
+
+      $oStmt->bind_param('i', $pnIdCidade);
+
+      $oStmt->execute();
+
+      $oStmt->store_result();
+
+      $oStmt->bind_result($id, $descricao);
+
+      if ($oStmt->num_rows > 0){
+        $i = 1;
+        while ($oStmt->fetch()) {
+          $this->setFiltroArray($filtroArray, $i, $id, $descricao);
+          $i = $i + 1;
+        }
+      }
+
+      $oStmt->free_result();
+
+      $oStmt->close();
+
+      $oConn->close();
+
+      return $filtroArray;
+    }
+
+    private function setFiltroArray(&$filtroArray, $i, $id, $descricao){
+      $filtroArray[$i] = new TipoEvento();
+
+      $filtroArray[$i]->setId($id);
+      $filtroArray[$i]->setDescricao($descricao);
+    }
+
     public function ConsultarEventosCadastrados($psEmail, $pnIdCidade){
 
       // if (!$this->testarEmailECidadeValidos($psEmail, $pnIdCidade)){
@@ -249,6 +310,17 @@
       return $tiposEventoArray;
     
     }
+
+    public function MontarFiltro($psEmail, $pnIdCidade){
+
+      $pbEmailValido = $this->TestarSeEmailValido($psEmail);
+
+      $filtroArray = $this->createArrayFiltro($pbEmailValido, $pnIdCidade);
+      
+      return $filtroArray;
+    
+    }
+  
   }
   
   

@@ -14,6 +14,7 @@
 		private $idEstado;
 		private $nomeEstado;
 		private $map;
+		private $idTipoEvento;
 
 		public function setId($id){
 			$this->id = $id;
@@ -167,5 +168,14 @@
 		public function getMap(){
 			return $this->map;
 		}
+
+		public function setIdTipoEvento($idTipoEvento){
+			$this->idTipoEvento = $idTipoEvento;
+		}
+
+		public function getIdTipoEvento(){
+			return $this->idTipoEvento;
+		}
+
 	}
 ?>

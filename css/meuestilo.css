@@ -20,9 +20,21 @@ html, body{
   padding: 0 0 0 0;
 }
 
+.div_filtro{
+  width: 100%; 
+  text-align: center; 
+  font-family: 'Bree'; 
+  color: #FFA500; 
+  font-size: 100%;
+}
+.checkbox{
+	width: 15px;
+	height: 15px;
+}
+
 .logo{
-	width: 25ex;
-	height: 25ex;
+	width: 22ex;
+	height: 22ex;
 }
 
 .titulo{

@@ -106,5 +106,50 @@ class Components{
 
 		return $sDropDown;
 	}
+
+	private function queryTipoEventos(){
+		return "SELECT t.id, t.descricao FROM tipo_evento t ORDER BY t.id";
+	}
+	
+	public function createTipoEventosDropDown($pnSelecionarId=0, $pnIdUpdate=0){
+		
+		$oConn = $this->oTools->getConn();
+
+		$oStmt = $oConn->prepare($this->queryTipoEventos());
+
+		$oStmt->execute();
+
+		$oStmt->store_result();
+
+      	$oStmt->bind_result($id, $descricao);
+
+      	if ($pnIdUpdate == 0){
+			$sDropDown = "<select id='idTipoEvento' name='idTipoEvento' class='combobox'> ";
+		} else {
+			$sDropDown = "<select id='idTipoEvento_" . $pnIdUpdate . "' name='idTipoEvento_" . $pnIdUpdate . "' class='combobox'> ";
+		}
+
+		$sSelecionar = "";
+
+		if($oStmt->num_rows > 0) {
+			while($oStmt->fetch()){
+
+				if ($pnSelecionarId!=0){
+					$sSelecionar = $id == $pnSelecionarId ? "selected='selected'" : "";
+				}
+
+				$sDropDown = $sDropDown . "<option value=$id $sSelecionar>$descricao</option> ";	
+			}
+		}
+		$sDropDown = $sDropDown . "</select> ";
+
+		$oStmt->free_result();
+
+		$oStmt->close();
+
+		$oConn->close();
+
+		return $sDropDown;
+	}
 }
 ?>

@@ -108,7 +108,7 @@
 
         $oStmt->fetch();
 
-        //$bEmailValido = $oStmt->num_rows > 0;
+        $bEmailValido = $oStmt->num_rows > 0;
 
         //$bEmailValido = ();
 
@@ -122,7 +122,8 @@
         echo 'Caught exception: '.  $e->getMessage(). "\n";
       }
 
-      return $psEmail == $sEmail;
+      //return $psEmail == $sEmail;
+      return $bEmailValido;
     }
 
     private function createArrayEventos($pbEmailValido, $pnIdCidade){

@@ -12,10 +12,11 @@ $evento_hora = $_POST['evento_hora_' . $evento_id];
 $evento_privado = $_POST['evento_privado_' . $evento_id];
 $evento_link = $_POST['evento_link_' . $evento_id];
 $evento_map = $_POST['evento_map_' . $evento_id];
+$id_tipo_evento = $_POST['idTipoEvento_' . $evento_id];
 
 $oEventosOperacoes = new eventosOperacoes();
 
-$bSuccess = $oEventosOperacoes->executeUpdate($evento_id, $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link, $evento_map); 
+$bSuccess = $oEventosOperacoes->executeUpdate($evento_id, $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link, $evento_map, $id_tipo_evento); 
   
 if($bSuccess){
 	$return = "Evento alterado com sucesso!";

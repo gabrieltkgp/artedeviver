@@ -11,10 +11,11 @@ $evento_hora = $_POST['evento_hora'];
 $evento_privado = $_POST['evento_privado'];
 $evento_link = $_POST['evento_link'];
 $evento_map = $_POST['evento_map'];
+$id_tipo_evento = $_POST['idTipoEvento'];
 
 $eventosOperacoes = new eventosOperacoes();
 
-$bSuccess = $eventosOperacoes->executeInsert($evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link, $evento_map);
+$bSuccess = $eventosOperacoes->executeInsert($evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link, $evento_map, $id_tipo_evento);
   
 if($bSuccess){
 	$return = "Novo evento inserido com sucesso!";

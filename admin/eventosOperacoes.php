@@ -5,13 +5,13 @@ include_once("../classes/eventos.php");
 
 class EventosOperacoes{
 	// BEGIN INSERT
-	private function insertNewEvento(&$pnId, $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link, $evento_map){
+	private function insertNewEvento(&$pnId, $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link, $evento_map, $id_tipo_evento){
 
 		$sSql = "INSERT INTO " .
 			"eventos " .
-			"(nome, local, endereco, observacao, id_cidade, data, privado, link, map) " .
+			"(nome, local, endereco, observacao, id_cidade, data, privado, link, map, id_tipo_evento) " .
 			"VALUES " .
-			"(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			"(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		$datahora = $evento_data . " " . $evento_hora . ":00";
 
@@ -19,7 +19,7 @@ class EventosOperacoes{
 			$oTools = new Tools();
 			$oConn = $oTools->getConn();
 			$oStmt = $oConn->prepare($sSql);
-			$oStmt->bind_param('ssssisiss', $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $datahora, $evento_privado, $evento_link, $evento_map);
+			$oStmt->bind_param('ssssisissi', $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $datahora, $evento_privado, $evento_link, $evento_map, $id_tipo_evento);
 
 			$bSuccess = $oStmt->execute();
 
@@ -41,36 +41,28 @@ class EventosOperacoes{
 		return $bSuccess;
 	}
 
-	private function testIfParametersAreValid($evento_nome, $evento_local, $id_cidade, $evento_data, $evento_hora){
+	private function testIfParametersAreValid($evento_nome, $evento_local, $evento_data, $evento_hora){
 		
-		// if (empty($pnFeatureId)){
-		// 	return false;
-		// }
+		if (empty($evento_nome)){
+			return false;
+		}
 
-		// if ($pnFeatureId <= 0){
-		// 	return false;
-		// }
+		if (empty($evento_local)){
+			return false;
+		}
 
-		// if (empty($psTaskName)){
-		// 	return false;
-		// }
+		if (empty($evento_data)){
+			return false;
+		}
 
-		// if (empty($psTaskDescription)){
-		// 	return false;
-		// }
-
-		// if (empty($pnTypeId)){
-		// 	return false;
-		// }
-
-		// if (!(($pnTypeId = FILE) or ($pnTypeId = TEXT))) {
-		// 	return false;
-		// }
+		if (empty($evento_hora)){
+			return false;
+		}
 
 		return true;
 	}
 
-	public function executeInsert($evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link, $evento_map){
+	public function executeInsert($evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link, $evento_map, $id_tipo_evento){
 
 		if (!$this->testIfParametersAreValid($evento_nome, $evento_local, $id_cidade, $evento_data, $evento_hora)){
 			echo "missing information.";
@@ -79,7 +71,7 @@ class EventosOperacoes{
 
 		$nId = 0;
 
-		$bSuccess = $this->insertNewEvento($nId, $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link, $evento_map);
+		$bSuccess = $this->insertNewEvento($nId, $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link, $evento_map, $id_tipo_evento);
 
 		return $bSuccess;
 	}
@@ -88,7 +80,7 @@ class EventosOperacoes{
 	// BEGIN QUERY
 	private function getSelectTextEvento($pnEventoId){
     	$select = "SELECT " .
-        	"eve.id, eve.nome, eve.local, eve.endereco, eve.observacao, eve.data, eve.id_cidade, eve.privado, eve.link, eve.map, cid.id_estado " .
+        	"eve.id, eve.nome, eve.local, eve.endereco, eve.observacao, eve.data, eve.id_cidade, eve.privado, eve.link, eve.map, cid.id_estado, eve.id_tipo_evento " .
         	"FROM " .
         	"eventos eve " .
         	"JOIN cidades cid ON cid.id = eve.id_cidade " .
@@ -121,6 +113,7 @@ class EventosOperacoes{
       $paEventosArray[$i]->setPrivado($row['privado']);
       $paEventosArray[$i]->setIdCidade($row['id_cidade']);
       $paEventosArray[$i]->setIdEstado($row['id_estado']);
+      $paEventosArray[$i]->setIdEstado($row['id_tipo_evento']);
     }
 
 	public function queryEventos($pnEventoId, $pnIdCidade){
@@ -144,7 +137,7 @@ class EventosOperacoes{
 
 			$oStmt->store_result();
 
-	        $oStmt->bind_result($id, $nome, $local, $endereco, $observacao, $data, $id_cidade, $privado, $link, $map, $id_estado);
+	        $oStmt->bind_result($id, $nome, $local, $endereco, $observacao, $data, $id_cidade, $privado, $link, $map, $id_estado, $id_tipo_evento);
 
 			if ($oStmt->num_rows > 0){
 				$i = 1;
@@ -164,6 +157,7 @@ class EventosOperacoes{
 					$eventosArray[$i]->setIdEstado($id_estado);
 					//$eventosArray[$i]->setNomeEstado($nome_estado);
 					$eventosArray[$i]->setMap($map);
+					$eventosArray[$i]->setIdTipoEvento($id_tipo_evento);
 
 					$i = $i + 1;
 				}  
@@ -202,7 +196,7 @@ class EventosOperacoes{
 	// END QUERY
 
 	// BEGIN UPDATE
-	private function updateEvento($evento_id, $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link, $evento_map){
+	private function updateEvento($evento_id, $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link, $evento_map, $id_tipo_evento){
  
 		$sSqlUpdateEvento = "UPDATE " .
 			"eventos " .
@@ -215,7 +209,8 @@ class EventosOperacoes{
 			"id_cidade = ?, ". 
 			"privado = ?, ". 
 			"link = ?, ".
-			"map = ? ".
+			"map = ?, ".
+			"id_tipo_evento = ? ".
 			"WHERE " .
 			"id = ?";
 
@@ -227,7 +222,7 @@ class EventosOperacoes{
 			$oConn = $oTools->getConn();
 
 			$oStmt = $oConn->prepare($sSqlUpdateEvento);
-			$oStmt->bind_param('sssssiissi',  $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $datahora, $id_cidade, $evento_privado, $evento_link, $evento_map, $evento_id);
+			$oStmt->bind_param('sssssiissii',  $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $datahora, $id_cidade, $evento_privado, $evento_link, $evento_map, $id_tipo_evento, $evento_id);
 
 			$bSucess = $oStmt->execute();
 
@@ -245,13 +240,13 @@ class EventosOperacoes{
 	    return $bSucess;
 	}
 
-	public function executeUpdate($evento_id, $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link, $evento_map){
+	public function executeUpdate($evento_id, $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link, $evento_map, $id_tipo_evento){
 		
 		if (empty($evento_id)){
 			return false;
 		}
 
-		return $this->updateEvento($evento_id, $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link, $evento_map);
+		return $this->updateEvento($evento_id, $evento_nome, $evento_local, $evento_endereco, $evento_observacao, $id_cidade, $evento_data, $evento_hora, $evento_privado, $evento_link, $evento_map, $id_tipo_evento);
 	}
 	// END UPDATE
 

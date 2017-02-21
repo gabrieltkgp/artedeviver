@@ -44,6 +44,11 @@ function createFormEventos(){
 		$return .= '	<div class="label"> Privado: </div>';
 		$return .= '	<input type="radio" name="evento_privado_' . $evento->getId() . '" id="evento_privado_' . $evento->getId() . '" value="1" '. ($evento->getPrivado() == 1 ? "checked" : "") .'> Sim ';
         $return .= '	<input type="radio" name="evento_privado_' . $evento->getId() . '" id="evento_privado_' . $evento->getId() . '" value="0" '. ($evento->getPrivado() == 0 ? "checked" : "") .'> Não';
+		
+		$return .= '	<div class="label"> Tipo do Evento: </div>';
+        //$oType = new Components();
+        $return .= $oType->createTipoEventosDropDown($evento->getIdTipoEvento(), $evento->getId());
+
 		$return .= '	<div class="label"> Link: </div>';
 		$return .= '	<input class="campo" name="evento_link_' . $evento->getId() . '" id="evento_link_' . $evento->getId() . '" value="' . $evento->getLink() . '" type=text size=80/>';
 		$return .= '	<div class="label"> Map: </div>';

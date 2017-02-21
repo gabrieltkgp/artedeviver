@@ -73,6 +73,15 @@
                 <div class="label">ABRANGÊNCIA:</div>
                 <input type="radio" name="evento_privado" value="0" checked> Publico
                 <input type="radio" name="evento_privado" value="1"> Privado
+
+                <div class="tipoEvento">
+                    <div class="label" id="label_tipoEvento">CIDADE:</div>
+                    <?php 
+                        include_once("../classes/components.php");
+                        $oType = new Components();
+                        echo $oType->createTipoEventosDropDown();
+                    ?>
+                </div>
                 
                 <div class="label">LINK:</div>
                 <input class="campo" name="evento_link" type="text" />

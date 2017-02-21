@@ -19,6 +19,7 @@ if (empty($filtroArray)) {
 		echo "<input type=\"checkbox\" name=\"". $filtro->getDescricao() ."\" value=\"".$filtro->getId() ."\" ";
 		echo " checked=\"checked\" onChange=\"escondeDiv(".$filtro->getId() .",this.checked);\" ";
 		echo " class=\"checkbox\">". $filtro->getDescricao() ." ";
+		echo "<br>";
 	}
 }
 ?>

@@ -20,6 +20,7 @@ foreach($eventosArray as $evento){
 	// }
 
 	// echo "<div id=div_$i class='evento' style='background-color:$cor'>";
+	echo "<p>";
 	if ($evento->getPrivado()){
 		echo "<fieldset id=div_".$i."_tp".$evento->getIdTipoEvento()." class='privado'>";
 		echo "<legend style=\"font-family: 'Bree';  color: #FFA500; text-align: right;\">Restrito </legend>";
@@ -68,7 +69,8 @@ foreach($eventosArray as $evento){
 	// $sHtmlEvento = $sHtmlEvento . "<div class='resultado'>Estado: ". $evento->getNomeEstado() ."</div>";
 	// $sHtmlEvento = $sHtmlEvento . "<br>";     
 	echo "</fieldset>";
-	echo "<br>";
+//	echo "<br>";
+	echo "</p>";
 
 	$i++;
 }

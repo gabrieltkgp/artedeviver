@@ -23,7 +23,7 @@ function validaCheck(elemento,flSituacao){
         if(!flSituacao) {
                 elemento.style.display='none'
         } else {
-                elemento.style.display='inline'
+                elemento.style.display='initial'
         }
 }
 

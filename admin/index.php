@@ -75,7 +75,7 @@
                 <input type="radio" name="evento_privado" value="1"> Privado
 
                 <div class="tipoEvento">
-                    <div class="label" id="label_tipoEvento">CIDADE:</div>
+                    <div class="label" id="label_tipoEvento">TIPO DE EVENTO:</div>
                     <?php 
                         include_once("../classes/components.php");
                         $oType = new Components();

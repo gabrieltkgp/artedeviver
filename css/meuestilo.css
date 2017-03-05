@@ -22,13 +22,13 @@ html, body{
 
 .div_filtro{
   width: 100%; 
-  text-align: center; 
+  text-align: left; 
   font-family: 'Bree'; 
   color: #FFA500; 
   font-size: 100%;
-  position: fixed;
-  top: 3px;
-  left: 1px;
+  /*position: fixed;*/
+  /*top: 3px;*/
+  /*left: 1px;*/
   opacity: 0.85;
   background-color: #FFFFFF;
   z-index: 7;

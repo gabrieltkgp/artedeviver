@@ -87,7 +87,7 @@
       return $sigla . "/". $nome;
     }
 
-    private function TestarSeEmailValido($psEmail){
+    public function TestarSeEmailValido($psEmail){
      
       $oTools = new Tools();
       

@@ -49,9 +49,22 @@ else{
 <div class="element">
 	<div class="trocar_email"><a href='trocarEmail.php'>X</a></div>
 		<div class="element-block2-left">
-			<div class="signin">
+			<?php 
+				include_once("../classes/eventosQuery2.php");
+
+				$eventosQuery = new EventosQuery2();
+
+				$bEmailValido = $eventosQuery->TestarSeEmailValido($_POST['email']);
+
+				if ($bEmailValido){
+					echo "<div class='signin2'>";
+				}else{
+					echo "<div class='signin'>";
+				}
+		 	?>
+		<!-- <div class="signin"> -->
 				<!--div abaixo vira um includo de filtro -->
-                                <div class="div_filtro"><?php include("montaFiltro.php"); ?></div> 
+                <div class="div_filtro"><?php include("montaFiltro.php"); ?></div> 
 				<div class="div_logo"><img src="../images/icone2.png" class="logo"></div>
 				<div class="nome_cidade"><?php include("nomeCidade.php"); ?></div>		
 				<div class="todos_eventos"><?php include("eventosConsulta.php"); ?></div>

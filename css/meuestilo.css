@@ -30,9 +30,11 @@ html, body{
   /*position: fixed;*/
   /*top: 3px;*/
   /*left: 1px;*/
-  opacity: 0.85;
-  background-color: #FFFFFF;
+  /*background-color: #FFFFFF;*/
   z-index: 7;
+  background-color: transparent;
+  opacity: 0.85;
+  filter: alpha(opacity=60);
 }
 .checkbox{
 	width: 15px;
@@ -42,6 +44,11 @@ html, body{
 .logo{
 	width: 22ex;
 	height: 22ex;
+}
+
+.voltar{
+  width: 2ex;
+  height: 2ex;
 }
 
 .titulo{
@@ -61,6 +68,16 @@ html, body{
   font-family: 'Bree'; 
   font-size: 120%; 
   color: #9f9f9f;
+}
+
+.texto_meditacoes{
+  padding: 5px 0 5px 0;
+  /*text-align: center;*/
+  text-align: center;
+  font-family: 'Bree'; 
+  font-size: 100%; 
+  color: #9f9f9f;
+  text-decoration: underline;
 }
 
 .nome_cidade{
@@ -322,8 +339,9 @@ a:hover {
     border-radius: 4px;
     background-image: url(../images/guruji.jpeg);
     background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-repeat: no-repeat round;
+    background-attachment: local;
+    background-position: top;
     /*box-shadow: 0 -1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);*/
 }
 
@@ -336,6 +354,30 @@ a:hover {
   padding: 0em 0em;
   border-radius: 4px;
   box-shadow: 0 -1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24); 
+}
+
+.meditacao{
+  width: 60%;
+  text-align: left;
+  /*margin-left: 70%;*/
+  font-family: 'Bree';
+  color: #FFA500;
+  float: left;
+  font-size: 80%;
+}
+
+.baixar{
+  /*width: auto;*/
+  width: 40%;
+  margin-left: 40%;
+  text-align: right;
+  /*float: left;*/
+  /*color: #FFA500;*/
+  color: #808080;
+  /*font-style: italic;*/
+  /*font-size: 80%;*/
+  font-family: 'Bree';
+  font-size: 80%;
 }
 
 @media(max-width:1440px){

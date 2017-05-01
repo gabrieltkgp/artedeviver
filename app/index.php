@@ -11,7 +11,8 @@ if (isset($_COOKIE['email'])){
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Eventos Arte de Viver</title>
+<title>Eventos Respira</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- <link href="../css/style.css" rel="stylesheet" type="text/css" media="all"/> -->
 <link href="../css/meuestilo.css" rel="stylesheet" type="text/css" media="all"/>
 <!-- Custom Theme files -->
@@ -64,6 +65,8 @@ if (isset($_COOKIE['email'])){
 				    <div class="botao">
 				    	<button id="pesquisar" class="btn" type="submit" form="form1" value="Submit">Pesquisar</button>
 				    </div>
+				    </p>
+				    <div class="texto_meditacoes"><a class="texto_meditacoes" href='meditacoes.php'>Clique aqui para baixar meditações guiadas</div>
 				</div>
 			</form>
 		</div>

@@ -13,14 +13,13 @@
 <!-- <script type="text/javascript" src="jquery-1.3.2.min.js"></script> -->
 <script src="../jquery/jquery.js"></script>
 <script src="../jquery/admin.js"></script>
-
-    <title>Arte de viver</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link href="../css/meuestilo.css" rel="stylesheet" type="text/css" media="all"/>
+<title>Admin Respira</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="../css/meuestilo.css" rel="stylesheet" type="text/css" media="all"/>
 </head>
 <body>
 <div class="element">
-<div class="trocar_email"><a href='../app/trocarEmail.php'>X</a></div>
+<div class="trocar_email"><a href='trocarEmail.php'><img src="../images/voltar.png" class="voltar"></a></div>
     <div class="element-block2-left">
         <div class="signin">
             <div id="readData">

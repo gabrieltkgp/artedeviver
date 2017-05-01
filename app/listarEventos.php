@@ -38,7 +38,6 @@ else{
 <!-- Custom Theme files -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 <!--google fonts-->
 <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700' rel='stylesheet' type='text/css'>
 <!--google fonts-->
@@ -47,7 +46,7 @@ else{
 </head>
 <body onLoad="reduzLogo();">
 <div class="element">
-	<div class="trocar_email"><a href='trocarEmail.php'>X</a></div>
+	<div class="trocar_email"><a href='trocarEmail.php'><img src="../images/voltar.png" class="voltar"></a></div>
 		<div class="element-block2-left">
 			<?php 
 				include_once("../classes/eventosQuery2.php");

@@ -46,9 +46,10 @@ else{
 </head>
 <body onLoad="reduzLogo();">
 <div class="element">
-	<div class="trocar_email"><a href='trocarEmail.php'><img src="../images/voltar.png" class="voltar"></a></div>
-		<div class="element-block2-left">
-			<?php 
+	<div class="trocar_email"><a href='trocarEmail.php'>Voltar</a></div>
+		<!-- <div class="element-block2-left"> -->
+			
+		<?php 
 				include_once("../classes/eventosQuery2.php");
 
 				$eventosQuery = new EventosQuery2();
@@ -60,15 +61,14 @@ else{
 				}else{
 					echo "<div class='signin'>";
 				}
-		 	?>
-		<!-- <div class="signin"> -->
+		?>
 				<!--div abaixo vira um includo de filtro -->
                 <div class="div_filtro"><?php include("montaFiltro.php"); ?></div> 
 				<div class="div_logo"><img src="../images/icone2.png" class="logo"></div>
 				<div class="nome_cidade"><?php include("nomeCidade.php"); ?></div>		
 				<div class="todos_eventos"><?php include("eventosConsulta.php"); ?></div>
 			</div>
-		</div>
+		<!-- </div> -->
 </div>
 </body>
 </html>

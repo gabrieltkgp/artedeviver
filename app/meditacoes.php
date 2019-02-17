@@ -23,22 +23,22 @@
 					<fieldset class='evento'>
 						<div class='resultado'>
 							<div class='meditacao'>Contentamento</div>
-							<div class='baixar'><a href='../meditacoes/Contentamento.mp3'>Baixar</div>
+							<div class='baixar'><a href='../meditacoes/Contentamento.mp3' download>Baixar</div>
 						</div>
 						</p>
 						<div class='resultado'>
 							<div class='meditacao'>De volta para a fonte</div>
-							<div class='baixar'><a href='../meditacoes/De volta para a Fonte.mp3'>Baixar</div>
+							<div class='baixar'><a href='../meditacoes/De volta para a Fonte.mp3' download>Baixar</div>
 						</div>
 						</p>
 						<div class='resultado'>
 							<div class='meditacao'>Florescendo no seu Sorriso</div>
-							<div class='baixar'><a href='../meditacoes/Florescendo no seu Sorriso.mp3'>Baixar</div>
+							<div class='baixar'><a href='../meditacoes/Florescendo no seu Sorriso.mp3' download>Baixar</div>
 						</div>
 						</p>
 						<div class='resultado'>
 							<div class='meditacao'>Transformando Emoções</div>
-							<div class='baixar'><a href='../meditacoes/Transformando Emocoes.mp3'>Baixar</div>
+							<div class='baixar'><a href='../meditacoes/Transformando Emocoes.mp3' download>Baixar</div>
 						</div>
 					</fieldset>
 				</div>

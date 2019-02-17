@@ -19,7 +19,7 @@
 </head>
 <body>
 <div class="element">
-<div class="trocar_email"><a href='trocarEmail.php'><img src="../images/voltar.png" class="voltar"></a></div>
+<div class="trocar_email"><a href='trocarEmail.php'>Voltar</a></div>
     <div class="element-block2-left">
         <div class="signin">
             <div id="readData">

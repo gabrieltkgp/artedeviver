@@ -46,13 +46,16 @@ class Components{
 	}
 
 	private function queryCidades(){
-		// return "SELECT c.id, c.nome, c.id_estado, e.sigla FROM cidades c JOIN estados e on e.id = c.id_estado WHERE c.id_estado = ? ORDER BY e.sigla, c.id";
-		return "SELECT c.id, c.nome, c.id_estado, e.sigla FROM cidades c JOIN estados e on e.id = c.id_estado ORDER BY e.sigla, c.nome";
+		return "SELECT DISTINCT c.id, c.nome, c.id_estado, e.sigla FROM cidades c 
+                INNER JOIN estados e on e.id = c.id_estado
+                WHERE c.id IN(SELECT id_cidade FROM eventos)
+                ORDER BY e.sigla, c.nome";
 	}
 	
-	// public function createCidadesDropDown($pnIdEstado, $pbExibirEstado=true){
 	public function createCidadesDropDown($pnSelecionarId=0, $pbExibirEstado=true, $pnIdUpdate=0){
-		$cidade = $this->oTools->getUsersCityName();
+		
+		//$cidade = $this->oTools->getUsersCityName();
+		$cidade = "";
 
 		$oConn = $this->oTools->getConn();
 

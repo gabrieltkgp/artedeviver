@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="element">
-<div class="trocar_email"><a href='../app/trocarEmail.php'>X</a></div>
+<div class="trocar_email"><a href='../app/trocarEmail.php'>Voltar</a></div>
     <div class="element-block2-left">
         <div class="signin">
             <div>

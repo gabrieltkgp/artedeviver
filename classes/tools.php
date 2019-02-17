@@ -1,5 +1,5 @@
 <?php
-include("../ip-detalhes/class.ipdetails.php");
+//include("../ip-detalhes/class.ipdetails.php");
 
 class Tools{
 	public function getConn(){
@@ -31,22 +31,22 @@ class Tools{
 	    } 
 	}
 
-	public function getUsersCityName(){
+	// public function getUsersCityName(){
 
-		$ipdetails = new ipdetails(); 
-    	$ipdetails->scan();
+	// 	$ipdetails = new ipdetails(); 
+ //    	$ipdetails->scan();
 
-    	if($ipdetails->get_pluginstatus() == 200) {
-    		$cityName = utf8_encode($ipdetails->get_city());
-    	}
-    	else
-    	{
-    		$cityName = "indefinido";
-    	}
+ //    	if($ipdetails->get_pluginstatus() == 200) {
+ //    		$cityName = utf8_encode($ipdetails->get_city());
+ //    	}
+ //    	else
+ //    	{
+ //    		$cityName = "indefinido";
+ //    	}
     	
-    	//echo $cityName;
+ //    	//echo $cityName;
 
-    	return $cityName;
-	}
+ //    	return $cityName;
+	// }
 }
 ?> 

@@ -37,10 +37,11 @@ if (isset($_COOKIE['email'])){
 			<!-- <form action="listarEventos.php" method="post" id="form1" onSubmit="return ( valida_form() )"> -->
 			 <form action="listarEventos.php" method="post" id="form1">
 				<div class="dados_form">
-					<div class="codigo">
+			        <div class="codigo">
 						<div class="label">CÓDIGO DE ACESSO (OPCIONAL):</div>
 						<input id="email" name="email" type="text" class="campo"/>
 					</div>
+
 		
 					<!-- <div id="label_estado">Estado:</div> -->
 					<!-- <?php
